@@ -12,7 +12,7 @@ Add this to your gemfile:
 gem 'karafka-sidekiq-backend'
 ```
 
-and create a file called ```application_worker``` inside of your ```app/workers``` directory, that looks like that:
+and create a file called ```application_worker.rb``` inside of your ```app/workers``` directory, that looks like that:
 
 ```ruby
 class ApplicationWorker < Karafka::BaseWorker
