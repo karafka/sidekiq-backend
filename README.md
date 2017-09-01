@@ -1,7 +1,5 @@
 # Karafka Sidekiq Backend
 
-![karafka logo](https://raw.githubusercontent.com/karafka/misc/master/logo/karafka_logotype_transparent2.png)
-
 [![Build Status](https://travis-ci.org/karafka/karafka-sidekiq-backend.png)](https://travis-ci.org/karafka/karafka-sidekiq-backend)
 
 Karafka Sidekiq Backend provides support for processing received Kafka messages inside of Sidekiq workers.
