@@ -12,7 +12,16 @@ Add this to your gemfile:
 gem 'karafka-sidekiq-backend'
 ```
 
+and create a file called ```application_worker.rb``` inside of your ```app/workers``` directory, that looks like that:
+
+```ruby
+class ApplicationWorker < Karafka::BaseWorker
+end
+```
+
 and you are ready to go. Karafka Sidekiq Backend integrates with Karafka automatically
+
+Note: You can name your application worker base class with any name you want. The only thing that is required is a direct inheritance from the ```Karafka::BaseWorker``` class.
 
 ## Usage
 
@@ -55,11 +64,9 @@ There are two options you can set inside of the ```topic``` block:
 | interchanger | Class      | Name of a parser class that we want to use to parse incoming data                                                 |
 
 
-## Workers
+### Workers
 
-**Note**: You can use Karafka __without__ Sidekiq as well. In cases like that, you don't need workers at all.
-
-Karafka by default will build a worker that will correspond to each of your controllers (so you will have a pair - controller and a worker). All of them will inherit from **ApplicationWorker** and will share all its settings.
+Karafka by default will build a worker that will correspond to each of your controllers (so you will have a pair - controller and a worker). All of them will inherit from ```ApplicationWorker``` and will share all its settings.
 
 To run Sidekiq you should have sidekiq.yml file in *config* folder. The example of ```sidekiq.yml``` file will be generated to config/sidekiq.yml.example once you run ```bundle exec karafka install```.
 
@@ -76,12 +83,12 @@ Note that even then, you need to specify a controller that will schedule a backg
 
 Custom workers need to provide a ```#perform_async``` method. It needs to accept two arguments:
 
- - ```topic``` - first argument is a current topic from which a given message comes
+ - ```topic_id``` - first argument is a current topic id from which a given message comes
  - ```params``` - all the params that came from Kafka + additional metadata. This data format might be changed if you use custom interchangers. Otherwise it will be an instance of Karafka::Params::Params.
 
 Keep in mind, that params might be in two states: parsed or unparsed when passed to #perform_async. This means, that if you use custom interchangers and/or custom workers, you might want to look into Karafka's sources to see exactly how it works.
 
-## Interchangers
+### Interchangers
 
 Custom interchangers target issues with non-standard (binary, etc.) data that we want to store when we do ```#perform_async```. This data might be corrupted when fetched in a worker (see [this](https://github.com/karafka/karafka/issues/30) issue). With custom interchangers, you can encode/compress data before it is being passed to scheduling and decode/decompress it when it gets into the worker.
 
