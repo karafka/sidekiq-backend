@@ -50,7 +50,6 @@ RSpec.configure do |config|
   end
 end
 
-require 'karafka'
 require 'karafka-sidekiq-backend'
 
 # Test setup for the framework

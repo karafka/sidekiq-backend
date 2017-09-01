@@ -4,6 +4,7 @@ module Karafka
   module Backends
     # Sidekiq backend that schedules stuff to Sidekiq worker for delayed execution
     module Sidekiq
+      # Karafka Sidekiq backend version
       VERSION = '1.0.0.pre1'
 
       private
