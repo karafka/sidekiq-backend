@@ -21,7 +21,7 @@ end
 
 and you are ready to go. Karafka Sidekiq Backend integrates with Karafka automatically
 
-Note: Worker class name can be different. Karafka will solve this, as long as it inherits from the ```Karafka::BaseWorker``` class.
+Note: You can name your application worker base class with any name you want. The only thing that is required is a direct inheritance from the ```Karafka::BaseWorker``` class.
 
 ## Usage
 
