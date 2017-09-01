@@ -4,7 +4,7 @@ RSpec.describe Karafka::Backends::Sidekiq do
   subject(:controller) { controller_class.new }
 
   let(:controller_class) { Class.new(Karafka::BaseController) }
-  let(:interchanger) { Karafka::Params::Interchanger }
+  let(:interchanger) { Karafka::Interchanger }
   let(:params_batch) { [OpenStruct.new(value: rand.to_s)] }
   let(:interchanged_data) { params_batch }
   let(:topic) do

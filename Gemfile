@@ -2,5 +2,11 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in capistrano-karafka.gemspec
 gemspec
+
+group :development, :test do
+  gem 'karafka', github: 'karafka/karafka', branch: '#147'
+  gem 'timecop'
+  gem 'rspec'
+  gem 'simplecov'
+end

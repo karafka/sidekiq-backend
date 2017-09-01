@@ -4,8 +4,6 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'karafka/backends/sidekiq'
 
-p Karafka::Backends::Sidekiq::VERSION
-
 Gem::Specification.new do |spec|
   spec.name        = 'karafka-sidekiq-backend'
   spec.version     = Karafka::Backends::Sidekiq::VERSION

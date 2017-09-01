@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Karafka::Params::Interchanger do
+RSpec.describe Karafka::Interchanger do
   subject(:interchanger_class) { described_class }
 
   let(:params) { double }
