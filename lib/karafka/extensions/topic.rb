@@ -11,6 +11,11 @@ module Topic
   def interchanger
     @interchanger ||= Karafka::Interchanger
   end
+
+  def self.included(base)
+    base.send :attr_writer, :worker
+    base.send :attr_writer, :interchanger
+  end
 end
 
 Karafka::Routing::Topic.include Topic
