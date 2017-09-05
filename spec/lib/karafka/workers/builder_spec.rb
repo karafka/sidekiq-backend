@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Test module that we use to check namespaced controllers
 module TestModule
 end
 
