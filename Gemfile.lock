@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    karafka-sidekiq-backend (1.0.0.pre1)
-      karafka (>= 1.0.0.pre1)
+    karafka-sidekiq-backend (1.0.0)
+      karafka (>= 1.0.0)
       sidekiq (>= 4.2)
 
 GEM
@@ -67,7 +67,7 @@ GEM
     i18n (0.8.6)
     inflecto (0.0.2)
     json (2.1.0)
-    karafka (1.0.0.rc1)
+    karafka (1.0.0)
       activesupport (>= 5.0)
       celluloid
       dry-configurable (~> 0.7)
@@ -80,7 +80,7 @@ GEM
       thor (~> 0.19)
       waterdrop (>= 0.4)
     minitest (5.10.3)
-    multi_json (1.12.1)
+    multi_json (1.12.2)
     null-logger (0.1.4)
     rack (2.0.3)
     rack-protection (2.0.0)
