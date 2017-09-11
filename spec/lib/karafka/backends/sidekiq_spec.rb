@@ -25,13 +25,13 @@ RSpec.describe Karafka::Backends::Sidekiq do
     controller_class.topic = topic
     controller.params_batch = params_batch
 
-    expect(interchanger)
+    allow(interchanger)
       .to receive(:load)
       .with(controller.params_batch.to_a)
       .and_return(interchanged_data)
   end
 
-  it 'expect to schedule with sidekiq using interchanger' do
+  it 'expect to schedule with sidekiq using interchanged data' do
     expect(topic.worker).to receive(:perform_async)
       .with(topic.id, interchanged_data)
     controller.call

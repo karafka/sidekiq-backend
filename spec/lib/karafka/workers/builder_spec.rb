@@ -106,15 +106,13 @@ RSpec.describe Karafka::Workers::Builder do
 
   describe '#base' do
     before do
-      expect(Karafka::BaseWorker)
-        .to receive(:subclasses)
-        .and_return([descendant])
     end
 
     context 'when there is a direct descendant of Karafka::BaseWorker' do
       let(:descendant) { double }
 
       it 'expect to use it' do
+        expect(Karafka::BaseWorker).to receive(:subclasses).and_return([descendant])
         expect(builder.send(:base)).to eq descendant
       end
     end
@@ -123,7 +121,10 @@ RSpec.describe Karafka::Workers::Builder do
       let(:descendant) { nil }
       let(:error) { Karafka::Errors::BaseWorkerDescentantMissing }
 
-      it { expect { builder.send(:base) }.to raise_error(error) }
+      it 'it expect to fail' do
+        expect(Karafka::BaseWorker).to receive(:subclasses).and_return([descendant])
+        expect { builder.send(:base) }.to raise_error(error)
+      end
     end
   end
 

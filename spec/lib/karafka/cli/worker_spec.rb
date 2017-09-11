@@ -18,27 +18,20 @@ RSpec.describe Karafka::Cli::Worker do
     end
 
     before do
-      expect(worker_cli)
+      allow(worker_cli)
         .to receive(:puts)
         .with('Starting Karafka worker')
-
-      expect(cli)
-        .to receive(:info)
-
-      expect(worker_cli)
-        .to receive(:puts)
-        .with(cmd)
-
-      expect(worker_cli)
-        .to receive(:exec)
-        .with(cmd)
     end
+
+    after { worker_cli.call(*params) }
 
     context 'when we dont add any additional Sidekiq parameters' do
       let(:params) { [] }
 
       it 'expect to print info and execute Sidekiq with default options' do
-        worker_cli.call
+        expect(cli).to receive(:info)
+        expect(worker_cli).to receive(:puts).with(cmd)
+        expect(worker_cli).to receive(:exec).with(cmd)
       end
     end
 
@@ -46,7 +39,9 @@ RSpec.describe Karafka::Cli::Worker do
       let(:params) { ["-q #{rand}", "-e #{rand}"] }
 
       it 'expect to print info and execute Sidekiq with extra options' do
-        worker_cli.call(*params)
+        expect(cli).to receive(:info)
+        expect(worker_cli).to receive(:puts).with(cmd)
+        expect(worker_cli).to receive(:exec).with(cmd)
       end
     end
   end

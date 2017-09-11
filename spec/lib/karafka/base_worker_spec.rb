@@ -15,10 +15,9 @@ RSpec.describe Karafka::BaseWorker do
 
   describe '#perform' do
     before do
-      expect(base_worker)
+      allow(base_worker)
         .to receive(:controller)
         .and_return(controller_instance)
-        .at_least(:once)
     end
 
     it 'performs controller action' do
@@ -49,12 +48,12 @@ RSpec.describe Karafka::BaseWorker do
     before do
       controller.topic = topic
 
-      expect(Karafka::Routing::Router)
+      allow(Karafka::Routing::Router)
         .to receive(:find)
         .with(topic_id)
         .and_return(topic)
 
-      expect(controller)
+      allow(controller)
         .to receive(:new)
         .and_return(controller_instance)
     end
