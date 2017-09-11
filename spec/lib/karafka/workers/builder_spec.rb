@@ -121,7 +121,7 @@ RSpec.describe Karafka::Workers::Builder do
       let(:descendant) { nil }
       let(:error) { Karafka::Errors::BaseWorkerDescentantMissing }
 
-      it 'it expect to fail' do
+      it 'expect to fail' do
         expect(Karafka::BaseWorker).to receive(:subclasses).and_return([descendant])
         expect { builder.send(:base) }.to raise_error(error)
       end
