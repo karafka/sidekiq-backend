@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+# @note Active Support is already included since Karafka is using it directly so no need
+#   to require it again in the gemspec, etc
 %w[
   karafka
   sidekiq
+  active_support/core_ext/class/subclasses
 ].each(&method(:require))
 
 # Karafka framework namespace
@@ -23,3 +26,4 @@ end
 
 # Uses Karafka loader to load all the sources that this backend needs
 Karafka::Loader.load!(Karafka::Backends::Sidekiq.core_root)
+Karafka::AttributesMap.prepend(Karafka::Extensions::SidekiqAttributesMap)

@@ -17,12 +17,8 @@ module Karafka
       # Prepends class methods into attributes map
       # @param base [Class] class that we prepend to
       def self.prepended(base)
-        class << base
-          prepend ClassMethods
-        end
+        base.singleton_class.prepend ClassMethods
       end
     end
   end
 end
-
-Karafka::AttributesMap.prepend Karafka::Extensions::SidekiqAttributesMap
