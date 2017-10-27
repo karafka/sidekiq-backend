@@ -10,7 +10,9 @@ module Karafka
     # @param params_batch [Array] Array with messages batch
     def perform(topic_id, params_batch)
       Karafka.monitor.notice(self.class, params_batch)
-      controller(topic_id, params_batch).consume
+      instance = controller(topic_id, params_batch)
+      # This allows to support both Karafka 1.0 and 1.1
+      instance.respond_to?(:consume) ? instance.consume : instance.perform
     end
 
     private
