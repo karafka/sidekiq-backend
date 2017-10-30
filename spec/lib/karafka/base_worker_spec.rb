@@ -7,7 +7,7 @@ RSpec.describe Karafka::BaseWorker do
   let(:args) { [rand.to_s, rand] }
   let(:controller) do
     ClassBuilder.inherit(Karafka::BaseController) do
-      def perform
+      def consume
         self
       end
     end
@@ -39,7 +39,7 @@ RSpec.describe Karafka::BaseWorker do
         interchanger: interchanger,
         controller: controller,
         backend: :sidekiq,
-        batch_processing: false,
+        batch_consuming: false,
         responder: nil,
         parser: nil
       )

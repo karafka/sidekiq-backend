@@ -10,7 +10,7 @@ RSpec.describe Karafka::Controllers::Includer do
     instance_double(
       Karafka::Routing::Topic,
       backend: backend,
-      batch_processing: batch_processing,
+      batch_consuming: batch_consuming,
       responder: responder
     )
   end
@@ -19,7 +19,7 @@ RSpec.describe Karafka::Controllers::Includer do
 
   describe 'inline with batch processing' do
     let(:backend) { :inline }
-    let(:batch_processing) { true }
+    let(:batch_consuming) { true }
     let(:responder) { nil }
 
     it { expect(controller_class.include?(backends_scope::Inline)).to eq true }
@@ -30,7 +30,7 @@ RSpec.describe Karafka::Controllers::Includer do
 
   describe 'inline without batch processing' do
     let(:backend) { :inline }
-    let(:batch_processing) { false }
+    let(:batch_consuming) { false }
     let(:responder) { nil }
 
     it { expect(controller_class.include?(backends_scope::Inline)).to eq true }
@@ -41,7 +41,7 @@ RSpec.describe Karafka::Controllers::Includer do
 
   describe 'inline with responder' do
     let(:backend) { :inline }
-    let(:batch_processing) { false }
+    let(:batch_consuming) { false }
     let(:responder) { Class.new }
 
     it { expect(controller_class.include?(backends_scope::Inline)).to eq true }
@@ -52,7 +52,7 @@ RSpec.describe Karafka::Controllers::Includer do
 
   describe 'sidekiq with responder' do
     let(:backend) { :sidekiq }
-    let(:batch_processing) { false }
+    let(:batch_consuming) { false }
     let(:responder) { Class.new }
 
     it { expect(controller_class.include?(backends_scope::Inline)).to eq false }

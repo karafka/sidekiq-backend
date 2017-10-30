@@ -13,7 +13,7 @@ RSpec.describe Karafka::Backends::Sidekiq do
       id: rand.to_s,
       interchanger: interchanger,
       backend: :sidekiq,
-      batch_processing: true,
+      batch_consuming: true,
       responder: nil,
       parser: nil,
       worker: Class.new(Karafka::BaseWorker)
@@ -27,7 +27,7 @@ RSpec.describe Karafka::Backends::Sidekiq do
 
     allow(interchanger)
       .to receive(:load)
-      .with(controller.params_batch.to_a)
+      .with(controller.send(:params_batch).to_a)
       .and_return(interchanged_data)
   end
 
