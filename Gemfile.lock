@@ -1,23 +1,8 @@
 PATH
-  remote: ../karafka
-  specs:
-    karafka (1.1.0)
-      activesupport (>= 5.0)
-      dry-configurable (~> 0.7)
-      dry-validation (~> 0.11)
-      envlogic (~> 1.0)
-      multi_json (>= 1.12)
-      rake (>= 11.3)
-      require_all (>= 1.4)
-      ruby-kafka (>= 0.5)
-      thor (~> 0.19)
-      waterdrop (>= 1.0.alpha2)
-
-PATH
   remote: .
   specs:
     karafka-sidekiq-backend (1.1.0)
-      karafka (>= 1.1.0)
+      karafka (>= 1.1.0.alpha1)
       sidekiq (>= 4.2)
 
 GEM
@@ -68,6 +53,17 @@ GEM
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
     json (2.1.0)
+    karafka (1.1.0.alpha1)
+      activesupport (>= 5.0)
+      dry-configurable (~> 0.7)
+      dry-validation (~> 0.11)
+      envlogic (~> 1.0)
+      multi_json (>= 1.12)
+      rake (>= 11.3)
+      require_all (>= 1.4)
+      ruby-kafka (>= 0.5)
+      thor (~> 0.19)
+      waterdrop (>= 1.0.alpha2)
     king_konf (0.1.8)
     minitest (5.10.3)
     multi_json (1.12.2)
@@ -107,17 +103,17 @@ GEM
     timecop (0.9.1)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    waterdrop (1.0.0.alpha1)
+    waterdrop (1.0.0.alpha2)
       delivery_boy (>= 0.2.2)
       dry-configurable (~> 0.7)
       dry-validation (~> 0.11)
       null-logger
+      ruby-kafka (>= 0.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  karafka!
   karafka-sidekiq-backend!
   rspec
   simplecov
