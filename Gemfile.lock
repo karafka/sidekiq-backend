@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     karafka-sidekiq-backend (1.1.0)
-      karafka (>= 1.1.0.alpha1)
+      karafka (>= 1.1.0.alpha2)
       sidekiq (>= 4.2)
 
 GEM
@@ -53,7 +53,7 @@ GEM
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
     json (2.1.0)
-    karafka (1.1.0.alpha1)
+    karafka (1.1.0.alpha2)
       activesupport (>= 5.0)
       dry-configurable (~> 0.7)
       dry-validation (~> 0.11)
