@@ -15,7 +15,7 @@ RSpec.describe Karafka::Routing::Builder do
   after { builder.clear }
 
   describe '#draw' do
-    context '0.5 compatible simple topic style' do
+    context 'when we run with 0.5 compatible simple topic style' do
       let(:topic1) { builder.first.topics.first }
       let(:topic2) { builder.last.topics.first }
       let(:consumer_group1) do
@@ -67,7 +67,7 @@ RSpec.describe Karafka::Routing::Builder do
       it { expect(builder.last.id).to eq "#{Karafka::App.config.client_id}_topic_name2" }
     end
 
-    context '0.6 simple topic style single topic groups' do
+    context 'when we run with 0.6 simple topic style single topic groups' do
       let(:topic1) { builder.first.topics.first }
       let(:topic2) { builder.last.topics.first }
       let(:consumer_group1) do
@@ -117,7 +117,7 @@ RSpec.describe Karafka::Routing::Builder do
       it { expect(builder.size).to eq 2 }
     end
 
-    context '0.6 simple topic style multiple topic group' do
+    context 'when we run with 0.6 simple topic style multiple topic group' do
       let(:topic1) { builder.first.topics.first }
       let(:topic2) { builder.first.topics.last }
 

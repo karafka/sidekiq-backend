@@ -27,7 +27,7 @@ RSpec.describe Karafka::Workers::Builder do
     context 'when the worker class already exists' do
       before { worker_class }
 
-      context 'and it is on a root level' do
+      context 'when it is on a root level' do
         let(:controller_class) do
           class SuperController
             self
@@ -43,7 +43,7 @@ RSpec.describe Karafka::Workers::Builder do
         it { expect(builder.build).to eq worker_class }
       end
 
-      context 'and it is in a module/class' do
+      context 'when it is in a module/class' do
         let(:controller_class) do
           module TestModule
             class SuperController
@@ -63,7 +63,7 @@ RSpec.describe Karafka::Workers::Builder do
         it { expect(builder.build).to eq worker_class }
       end
 
-      context 'and it is anonymous' do
+      context 'when it is anonymous' do
         let(:controller_class) { Class.new }
         let(:worker_class) { nil }
 
@@ -72,7 +72,7 @@ RSpec.describe Karafka::Workers::Builder do
     end
 
     context 'when a given worker class does not exist' do
-      context 'and it is on a root level' do
+      context 'when it is on a root level' do
         let(:controller_class) do
           class SuperSadController
             self
@@ -86,7 +86,7 @@ RSpec.describe Karafka::Workers::Builder do
         it { expect(builder.build).to be < Karafka::BaseWorker }
       end
 
-      context 'and it is in a module/class' do
+      context 'when it is in a module/class' do
         let(:controller_class) do
           module TestModule
             class SuperSad2Controller
