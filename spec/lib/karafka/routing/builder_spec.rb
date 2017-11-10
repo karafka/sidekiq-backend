@@ -155,7 +155,7 @@ RSpec.describe Karafka::Routing::Builder do
       it { expect(builder.size).to eq 1 }
     end
 
-    context 'invalid route' do
+    context 'when it is an invalid route' do
       let(:invalid_route) do
         described_class.instance.draw do
           consumer_group '$%^&*(' do
