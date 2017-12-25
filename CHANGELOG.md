@@ -4,6 +4,7 @@
 - Ruby 2.4.2 support
 - #235 - Rename perform to consume
 - Karafka 1.1 support
+- Ruby 2.5.0 support
 
 ## 1.0
 
