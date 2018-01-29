@@ -27,3 +27,6 @@ end
 # Uses Karafka loader to load all the sources that this backend needs
 Karafka::Loader.load!(Karafka::Backends::Sidekiq.core_root)
 Karafka::AttributesMap.prepend(Karafka::Extensions::SidekiqAttributesMap)
+# Register internal events for instrumentation
+Karafka.monitor.register_event 'backends.sidekiq.call'
+Karafka.monitor.register_event 'backends.sidekiq.base_worker.perform'

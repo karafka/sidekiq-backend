@@ -6,10 +6,10 @@ RSpec.describe Karafka::Routing::Topic do
   let(:consumer_group) { instance_double(Karafka::Routing::ConsumerGroup, id: group_id) }
   let(:name) { :test }
   let(:group_id) { rand.to_s }
-  let(:controller) { Class.new(Karafka::BaseController) }
+  let(:consumer) { Class.new(Karafka::BaseConsumer) }
 
   before do
-    topic.controller = controller
+    topic.consumer = consumer
     topic.backend = :inline
   end
 
@@ -31,7 +31,7 @@ RSpec.describe Karafka::Routing::Topic do
   describe '#worker' do
     before do
       topic.worker = worker
-      topic.controller = controller
+      topic.consumer = consumer
     end
 
     context 'when backend is inline' do
@@ -55,7 +55,7 @@ RSpec.describe Karafka::Routing::Topic do
         let(:builder) { double }
 
         it 'expect to build worker using builder' do
-          expect(Karafka::Workers::Builder).to receive(:new).with(controller).and_return(builder)
+          expect(Karafka::Workers::Builder).to receive(:new).with(consumer).and_return(builder)
           expect(builder).to receive(:build).and_return(built_worker)
           expect(topic.worker).to eq built_worker
         end
@@ -94,8 +94,8 @@ RSpec.describe Karafka::Routing::Topic do
   end
 
   describe '#to_h' do
-    it 'expect to contain all the topic map attributes plus id and controller' do
-      expected = (Karafka::AttributesMap.topic + %i[id controller]).sort
+    it 'expect to contain all the topic map attributes plus id and consumer' do
+      expected = (Karafka::AttributesMap.topic + %i[id consumer]).sort
       expect(topic.to_h.keys.sort).to eq(expected)
     end
   end
