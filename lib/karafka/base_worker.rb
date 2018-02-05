@@ -9,13 +9,13 @@ module Karafka
     # @param topic_id [String] Unique topic id that we will use to find a proper topic
     # @param params_batch [Array] Array with messages batch
     def perform(topic_id, params_batch)
+      consumer = consumer(topic_id, params_batch)
+
       Karafka.monitor.instrument(
         'backends.sidekiq.base_worker.perform',
         caller: self,
-        params_batch: params_batch
-      ) do
-        consumer(topic_id, params_batch).consume
-      end
+        consumer: consumer
+      ) { consumer.consume }
     end
 
     private

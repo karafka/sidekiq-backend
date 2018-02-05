@@ -13,7 +13,7 @@ module Karafka
       #   params_batch as a second one (we pass topic to be able to build back the consumer
       #   in the worker)
       def call
-        Karafka.monitor.instrument('backends.sidekiq.call', caller: self) do
+        Karafka.monitor.instrument('backends.sidekiq.process', caller: self) do
           topic.worker.perform_async(
             topic.id,
             topic.interchanger.load(params_batch.to_a)

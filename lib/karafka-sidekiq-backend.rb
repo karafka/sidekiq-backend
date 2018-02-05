@@ -28,5 +28,7 @@ end
 Karafka::Loader.load!(Karafka::Backends::Sidekiq.core_root)
 Karafka::AttributesMap.prepend(Karafka::Extensions::SidekiqAttributesMap)
 # Register internal events for instrumentation
-Karafka.monitor.register_event 'backends.sidekiq.call'
-Karafka.monitor.register_event 'backends.sidekiq.base_worker.perform'
+%w[
+  backends.sidekiq.process
+  backends.sidekiq.base_worker.perform
+].each(&Karafka.monitor.method(:register_event))
