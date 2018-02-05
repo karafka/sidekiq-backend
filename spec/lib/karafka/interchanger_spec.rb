@@ -9,7 +9,7 @@ RSpec.describe Karafka::Interchanger do
         'value' => 1,
         'parser' => Class,
         'receive_time' => 1,
-        'a' => 1,
+        'a' => 1
       }
     ]
   end
@@ -27,7 +27,7 @@ RSpec.describe Karafka::Interchanger do
           'a' => 1,
           parser: Class,
           value: 1,
-          receive_time: 1,
+          receive_time: 1
         }
       ]
     end

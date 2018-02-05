@@ -13,7 +13,7 @@ RSpec.describe Karafka::Instrumentation::Listener do
     let(:params_batch) { [1] }
     let(:count) { params_batch.size }
     let(:message) do
-      "Scheduling of #{count} messages to Sidekiq backend on topic #{topic_name} took #{time} ms"
+      "Scheduling of #{count} messages to Sidekiq on topic #{topic_name} took #{time} ms"
     end
     let(:caller) do
       instance_double(

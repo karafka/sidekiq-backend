@@ -5,7 +5,7 @@ RSpec.describe Karafka::Backends::Sidekiq do
 
   let(:consumer_class) { Class.new(Karafka::BaseConsumer) }
   let(:interchanger) { Karafka::Interchanger }
-  let(:params_batch) { [{value: rand.to_s}] }
+  let(:params_batch) { [{ value: rand.to_s }] }
   let(:interchanged_data) { params_batch }
   let(:topic) do
     instance_double(
