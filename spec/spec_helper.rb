@@ -66,3 +66,5 @@ module Karafka
     end
   end
 end
+
+Karafka::App.boot!
