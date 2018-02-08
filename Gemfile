@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # @todo Remove once Karafka 1.2 has been released
-gem 'karafka', git: 'https://github.com/karafka/karafka.git', branch: 'monitor'
+gem 'karafka', git: 'https://github.com/karafka/karafka.git'
 
 gemspec
 
