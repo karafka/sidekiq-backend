@@ -30,6 +30,26 @@ RSpec.describe Karafka::Instrumentation::Listener do
   end
 
   describe '#on_backends_sidekiq_base_worker_perform' do
-    pending
+    subject(:trigger) { described_class.on_backends_sidekiq_base_worker_perform(event) }
+
+    let(:time) { rand }
+    let(:payload) { { caller: self, time: time, consumer: consumer } }
+    let(:params_batch) { [1] }
+    let(:count) { params_batch.size }
+    let(:message) do
+      "Sidekiq processing of topic #{topic_name} with #{count} messages took #{time} ms"
+    end
+    let(:consumer) do
+      instance_double(
+        Karafka::BaseConsumer,
+        params_batch: params_batch,
+        topic: topic
+      )
+    end
+
+    it 'expect logger to log proper message' do
+      expect(Karafka.logger).to receive(:info).with(message)
+      trigger
+    end
   end
 end
