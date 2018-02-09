@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
-# Test module that we use to check namespaced controllers
+# Test module that we use to check namespaced consumers
 module TestModule
 end
 
 RSpec.describe Karafka::Workers::Builder do
-  subject(:builder) { described_class.new(controller_class) }
+  subject(:builder) { described_class.new(consumer_class) }
 
-  let(:controller_class) { double }
+  let(:consumer_class) { double }
 
   describe '.new' do
-    it 'assigns internally controller_class' do
-      expect(builder.instance_variable_get('@controller_class')).to eq controller_class
+    it 'assigns internally consumer_class' do
+      expect(builder.instance_variable_get('@consumer_class')).to eq consumer_class
     end
   end
 
@@ -28,8 +28,8 @@ RSpec.describe Karafka::Workers::Builder do
       before { worker_class }
 
       context 'when it is on a root level' do
-        let(:controller_class) do
-          class SuperController
+        let(:consumer_class) do
+          class SuperConsumer
             self
           end
         end
@@ -44,9 +44,9 @@ RSpec.describe Karafka::Workers::Builder do
       end
 
       context 'when it is in a module/class' do
-        let(:controller_class) do
+        let(:consumer_class) do
           module TestModule
-            class SuperController
+            class SuperConsumer
               self
             end
           end
@@ -64,7 +64,7 @@ RSpec.describe Karafka::Workers::Builder do
       end
 
       context 'when it is anonymous' do
-        let(:controller_class) { Class.new }
+        let(:consumer_class) { Class.new }
         let(:worker_class) { nil }
 
         it { expect(builder.build).to be < Karafka::BaseWorker }
@@ -73,8 +73,8 @@ RSpec.describe Karafka::Workers::Builder do
 
     context 'when a given worker class does not exist' do
       context 'when it is on a root level' do
-        let(:controller_class) do
-          class SuperSadController
+        let(:consumer_class) do
+          class SuperSadConsumer
             self
           end
         end
@@ -87,9 +87,9 @@ RSpec.describe Karafka::Workers::Builder do
       end
 
       context 'when it is in a module/class' do
-        let(:controller_class) do
+        let(:consumer_class) do
           module TestModule
-            class SuperSad2Controller
+            class SuperSad2Consumer
               self
             end
           end

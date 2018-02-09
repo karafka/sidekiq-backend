@@ -20,12 +20,20 @@ module Karafka
       end
 
       # @param params_batch [Hash] Sidekiqs params that are now a Hash (after they were JSON#parse)
-      # @note Hash is what we need to build Karafka::Params::Params, so we do nothing
-      #   with it. If you implement your own interchanger logic, this method needs to return
-      #   a hash with appropriate data that will be used to build Karafka::Params::Params
-      # @return [Hash] We return exactly what we received. We rely on sidekiqs default
-      #   interchanging format
+      # @note Since Sidekiq does not like symbols, we restore symbolized keys for system keys, so
+      #   everything can work as expected. Keep in mind, that custom data will always be assigned
+      #   with string keys per design. To change it, pleasae change this interchanger and create
+      #   your own custom parser
       def parse(params_batch)
+        params_batch.map! do |params|
+          Karafka::Params::Params::SYSTEM_KEYS.each do |key|
+            stringified_key = key.to_s
+            params[key] = params.delete(stringified_key) if params.key?(stringified_key)
+          end
+
+          params
+        end
+
         params_batch
       end
     end

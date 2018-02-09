@@ -1,5 +1,9 @@
 # Karafka Sidekiq Backend
 
+## 1.2
+- #274 - Rename controllers to consumers
+- Karafka 1.2 support
+
 ## 1.1
 - Ruby 2.4.2 support
 - #235 - Rename perform to consume

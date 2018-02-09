@@ -8,9 +8,9 @@ module Karafka
     module SidekiqTopicAttributes
       # @return [Class] Class (not an instance) of a worker that should be used to schedule the
       #   background job
-      # @note If not provided - will be built based on the provided controller
+      # @note If not provided - will be built based on the provided consumer
       def worker
-        @worker ||= backend == :sidekiq ? Karafka::Workers::Builder.new(controller).build : nil
+        @worker ||= backend == :sidekiq ? Karafka::Workers::Builder.new(consumer).build : nil
       end
 
       # @return [Class] Interchanger class (not an instance) that we want to use to interchange

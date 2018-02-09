@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Karafka::Backends::Sidekiq do
-  subject(:controller) { controller_class.new }
+  subject(:consumer) { consumer_class.new }
 
-  let(:controller_class) { Class.new(Karafka::BaseController) }
+  let(:consumer_class) { Class.new(Karafka::BaseConsumer) }
   let(:interchanger) { Karafka::Interchanger }
-  let(:params_batch) { [OpenStruct.new(value: rand.to_s)] }
+  let(:params_batch) { [{ value: rand.to_s }] }
   let(:interchanged_data) { params_batch }
   let(:topic) do
     instance_double(
@@ -21,19 +21,19 @@ RSpec.describe Karafka::Backends::Sidekiq do
   end
 
   before do
-    controller_class.include(described_class)
-    controller_class.topic = topic
-    controller.params_batch = params_batch
+    consumer_class.include(described_class)
+    consumer_class.topic = topic
+    consumer.params_batch = params_batch
 
     allow(interchanger)
       .to receive(:load)
-      .with(controller.send(:params_batch).to_a)
+      .with(consumer.send(:params_batch).to_a)
       .and_return(interchanged_data)
   end
 
   it 'expect to schedule with sidekiq using interchanged data' do
     expect(topic.worker).to receive(:perform_async)
       .with(topic.id, interchanged_data)
-    controller.call
+    consumer.call
   end
 end
