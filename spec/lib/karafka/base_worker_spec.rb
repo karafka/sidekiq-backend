@@ -3,10 +3,10 @@
 RSpec.describe Karafka::BaseWorker do
   subject(:base_worker) { described_class.new }
 
-  let(:controller_instance) { controller.new }
+  let(:consumer_instance) { consumer.new }
   let(:args) { [rand.to_s, rand] }
-  let(:controller) do
-    ClassBuilder.inherit(Karafka::BaseController) do
+  let(:consumer) do
+    ClassBuilder.inherit(Karafka::BaseConsumer) do
       def consume
         self
       end
@@ -16,19 +16,19 @@ RSpec.describe Karafka::BaseWorker do
   describe '#perform' do
     before do
       allow(base_worker)
-        .to receive(:controller)
-        .and_return(controller_instance)
+        .to receive(:consumer)
+        .and_return(consumer_instance)
     end
 
-    it 'performs controller action' do
-      expect(controller_instance)
+    it 'performs consumer action' do
+      expect(consumer_instance)
         .to receive(:consume)
 
       expect { base_worker.perform(*args) }.not_to raise_error
     end
   end
 
-  describe '#controller' do
+  describe '#consumer' do
     let(:topic_id) { rand.to_s }
     let(:interchanger) { double }
     let(:params_batch) { double }
@@ -37,7 +37,7 @@ RSpec.describe Karafka::BaseWorker do
       instance_double(
         Karafka::Routing::Topic,
         interchanger: interchanger,
-        controller: controller,
+        consumer: consumer,
         backend: :sidekiq,
         batch_consuming: false,
         responder: nil,
@@ -46,22 +46,22 @@ RSpec.describe Karafka::BaseWorker do
     end
 
     before do
-      controller.topic = topic
+      consumer.topic = topic
 
       allow(Karafka::Routing::Router)
         .to receive(:find)
         .with(topic_id)
         .and_return(topic)
 
-      allow(controller)
+      allow(consumer)
         .to receive(:new)
-        .and_return(controller_instance)
+        .and_return(consumer_instance)
     end
 
-    it 'expect to use router to pick controller, assign params_batch and return' do
+    it 'expect to use router to pick consumer, assign params_batch and return' do
       expect(interchanger).to receive(:parse).with(params_batch).and_return(interchanged_params)
-      expect(controller_instance).to receive(:params_batch=).with(interchanged_params)
-      expect(base_worker.send(:controller, topic_id, params_batch)).to eq controller_instance
+      expect(consumer_instance).to receive(:params_batch=).with(interchanged_params)
+      expect(base_worker.send(:consumer, topic_id, params_batch)).to eq consumer_instance
     end
   end
 end
