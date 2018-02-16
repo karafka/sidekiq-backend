@@ -81,7 +81,7 @@ GEM
     multi_json (1.13.1)
     null-logger (0.1.4)
     rack (2.0.4)
-    rack-protection (2.0.0)
+    rack-protection (2.0.1)
       rack
     rake (12.3.0)
     redis (4.0.1)
