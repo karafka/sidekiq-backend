@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/karafka/karafka.git
-  revision: c3ee06995c0a3ccaa2d52cce16acd6b3d9dc3dd6
+  revision: 2d31dcabfd9a42834d599c5a6fcd272167b3338c
   specs:
     karafka (1.2.0)
-      activesupport (>= 5.0)
+      activesupport (>= 4.0)
       dry-configurable (~> 0.7)
       dry-inflector (~> 0.1.1)
       dry-monitor (~> 0.1)
@@ -14,7 +14,19 @@ GIT
       require_all (>= 1.4)
       ruby-kafka (>= 0.5.3)
       thor (~> 0.19)
-      waterdrop (>= 1.0.1)
+      waterdrop (>= 1.2.0)
+
+GIT
+  remote: https://github.com/karafka/waterdrop.git
+  revision: baea62e7085c735741d3764197649c9659185307
+  specs:
+    waterdrop (1.2.0)
+      delivery_boy (>= 0.2.3)
+      dry-configurable (~> 0.7)
+      dry-monitor (~> 0.1)
+      dry-validation (~> 0.11)
+      null-logger
+      ruby-kafka (>= 0.5.3)
 
 PATH
   remote: .
@@ -121,12 +133,6 @@ GEM
     timecop (0.9.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    waterdrop (1.0.1)
-      delivery_boy (>= 0.2.2)
-      dry-configurable (~> 0.7)
-      dry-validation (~> 0.11)
-      null-logger
-      ruby-kafka (>= 0.5)
 
 PLATFORMS
   ruby
@@ -137,6 +143,7 @@ DEPENDENCIES
   rspec
   simplecov
   timecop
+  waterdrop!
 
 BUNDLED WITH
    1.16.1

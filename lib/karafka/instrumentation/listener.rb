@@ -5,7 +5,7 @@ module Karafka
   module Instrumentation
     # Additional methods for listener that listen on instrumentation related to the Sidekiq
     # backend of Karafka
-    class Listener
+    module Listener
       class << self
         # Logs info about scheduling of a certain dataset with a Sidekiq backend
         # @param event [Dry::Events::Event] event details including payload
