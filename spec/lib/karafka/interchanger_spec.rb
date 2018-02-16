@@ -3,7 +3,7 @@
 RSpec.describe Karafka::Interchanger do
   subject(:interchanger_class) { described_class }
 
-  let(:params_batch) do
+  let(:parsed_params_batch) do
     [
       {
         'value' => 1,
@@ -13,14 +13,30 @@ RSpec.describe Karafka::Interchanger do
       }
     ]
   end
+  let(:params_batch) do
+    instance_double(
+      Karafka::Params::ParamsBatch,
+      parsed: parsed_params_batch
+    )
+  end
 
   describe '#load' do
-    it 'expect to return what was provided' do
-      expect(interchanger_class.load(params_batch)).to eq params_batch
+    it 'expect to return parsed version of itself' do
+      expect(interchanger_class.load(params_batch)).to eq parsed_params_batch
     end
   end
 
   describe '#parse' do
+    let(:params_batch) do
+      [
+        {
+          'value' => 1,
+          'parser' => Class,
+          'receive_time' => 1,
+          'a' => 1
+        }
+      ]
+    end
     let(:parsed_params_batch) do
       [
         {

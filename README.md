@@ -98,12 +98,16 @@ Custom interchangers target issues with non-standard (binary, etc.) data that we
 ```ruby
 class Base64Interchanger
   class << self
-    def load(params)
-      Base64.encode64(Marshal.dump(params))
+    def load(params_batch)
+      params_batch.map do |params|
+        Base64.encode64(Marshal.dump(params))
+      end
     end
 
-    def parse(params)
-      Marshal.load(Base64.decode64(params))
+    def parse(params_batch)
+      params_batch.map do |params|
+        Marshal.load(Base64.decode64(params))
+      end
     end
   end
 end

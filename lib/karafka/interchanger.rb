@@ -13,22 +13,24 @@ module Karafka
       # @note Params might not be parsed because of lazy loading feature. If you implement your
       #   own interchanger logic, this method needs to return data that can be converted to
       #   json with default Sidekiqs logic
-      # @return [Karafka::Params::ParamsBatch] same as input. We assume that our incoming data is
-      #   jsonable-safe and we can rely on a direct Sidekiq encoding logic
+      # @return [Karafka::Params::ParamsBatch] parsed params batch. There are too many problems
+      #   with passing unparsed data from Karafka to Sidekiq, to make it a default. In case you
+      #   need this, please implement your own interchanger.
       def load(params_batch)
-        params_batch
+        params_batch.parsed
       end
 
       # @param params_batch [Hash] Sidekiqs params that are now a Hash (after they were JSON#parse)
       # @note Since Sidekiq does not like symbols, we restore symbolized keys for system keys, so
       #   everything can work as expected. Keep in mind, that custom data will always be assigned
-      #   with string keys per design. To change it, pleasae change this interchanger and create
+      #   with string keys per design. To change it, please change this interchanger and create
       #   your own custom parser
       def parse(params_batch)
         params_batch.map! do |params|
           Karafka::Params::Params::SYSTEM_KEYS.each do |key|
             stringified_key = key.to_s
-            params[key] = params.delete(stringified_key) if params.key?(stringified_key)
+            next unless params.key?(stringified_key)
+            params[key] ||= params.delete(stringified_key)
           end
 
           params

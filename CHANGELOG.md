@@ -1,8 +1,9 @@
 # Karafka Sidekiq Backend
 
-## 1.2.0.beta1
+## 1.2.0.beta2
 - #274 - Rename controllers to consumers
 - Karafka 1.2 support
+- Parse data before pushing to Sidekiq
 
 ## 1.1
 - Ruby 2.4.2 support
