@@ -1,6 +1,6 @@
 # Karafka Sidekiq Backend
 
-## 1.2
+## 1.2.0.beta1
 - #274 - Rename controllers to consumers
 - Karafka 1.2 support
 
