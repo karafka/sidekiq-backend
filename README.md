@@ -95,29 +95,6 @@ Custom interchangers target issues with non-standard (binary, etc.) data that we
 
 **Warning**: if you decide to use slow interchangers, they might significantly slow down Karafka.
 
-```ruby
-class Base64Interchanger
-  class << self
-    def load(params_batch)
-      params_batch.map do |params|
-        Base64.encode64(Marshal.dump(params))
-      end
-    end
-
-    def parse(params_batch)
-      params_batch.map do |params|
-        Marshal.load(Base64.decode64(params))
-      end
-    end
-  end
-end
-
-topic :binary_video_details do
-  controller Videos::DetailsController
-  interchanger Base64Interchanger
-end
-```
-
 ## References
 
 * [Karafka framework](https://github.com/karafka/karafka)

@@ -59,7 +59,7 @@ RSpec.describe Karafka::BaseWorker do
     end
 
     it 'expect to use router to pick consumer, assign params_batch and return' do
-      expect(interchanger).to receive(:parse).with(params_batch).and_return(interchanged_params)
+      expect(interchanger).to receive(:decode).with(params_batch).and_return(interchanged_params)
       expect(consumer_instance).to receive(:params_batch=).with(interchanged_params)
       expect(base_worker.send(:consumer, topic_id, params_batch)).to eq consumer_instance
     end

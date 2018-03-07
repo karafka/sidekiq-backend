@@ -26,7 +26,7 @@ RSpec.describe Karafka::Backends::Sidekiq do
     consumer.params_batch = params_batch
 
     allow(interchanger)
-      .to receive(:load)
+      .to receive(:encode)
       .with(consumer.send(:params_batch).to_a)
       .and_return(interchanged_data)
   end
