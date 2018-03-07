@@ -62,7 +62,7 @@ There are two options you can set inside of the ```topic``` block:
 | Option       | Value type | Description                                                                                                       |
 |--------------|------------|-------------------------------------------------------------------------------------------------------------------|
 | worker       | Class      | Name of a worker class that we want to use to schedule perform code                                               |
-| interchanger | Class      | Name of a parser class that we want to use to parse incoming data                                                 |
+| interchanger | Class      | Name of an interchanger class that we want to use to pass the incoming data to Sidekiq                            |
 
 
 ### Workers
