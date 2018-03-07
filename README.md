@@ -1,6 +1,6 @@
 # Karafka Sidekiq Backend
 
-[![Build Status](https://travis-ci.org/karafka/karafka-sidekiq-backend.png)](https://travis-ci.org/karafka/karafka-sidekiq-backend)
+[![Build Status](https://travis-ci.org/karafka/sidekiq-backend.png)](https://travis-ci.org/karafka/karafka-sidekiq-backend)
 [![Join the chat at https://gitter.im/karafka/karafka](https://badges.gitter.im/karafka/karafka.svg)](https://gitter.im/karafka/karafka?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Karafka Sidekiq Backend](https://github.com/karafka/karafka-sidekiq-backend) provides support for consuming (processing) received Kafka messages inside of Sidekiq workers.
