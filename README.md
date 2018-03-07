@@ -47,7 +47,7 @@ App.routes.draw do
     topic :binary_video_details do
       controller Videos::DetailsController
       worker Workers::DetailsWorker
-      interchanger Interchangers::Binary
+      interchanger Interchangers::MyCustomInterchanger
     end
   end
 end
@@ -94,6 +94,12 @@ Custom workers need to provide a ```#perform_async``` method. It needs to accept
 Custom interchangers target issues with non-standard (binary, etc.) data that we want to store when we do ```#perform_async```. This data might be corrupted when fetched in a worker (see [this](https://github.com/karafka/karafka/issues/30) issue). With custom interchangers, you can encode/compress data before it is being passed to scheduling and decode/decompress it when it gets into the worker.
 
 **Warning**: if you decide to use slow interchangers, they might significantly slow down Karafka.
+
+**Security warning**: By design, the default interchanger can deserialize almost any class loaded into the Ruby process. In many cases this can lead to remote code execution if the Marshal data is loaded from an untrusted source.
+
+As a result, default interchanger is not suitable as a general purpose serialization format and you should never unmarshal user supplied input or other untrusted data.
+
+If you need to deserialize untrusted data, use JSON or another serialization format that is only able to load simple, "primitive" types such as String, Array, Hash, etc. Never allow user input to specify arbitrary types to deserialize into.
 
 ## References
 
