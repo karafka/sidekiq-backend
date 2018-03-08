@@ -3,7 +3,7 @@
 RSpec.describe Karafka::Interchanger do
   subject(:interchanger_class) { described_class }
 
-  let(:parsed_params_batch) do
+  let(:array_params_batch) do
     [
       {
         'value' => 1,
@@ -16,7 +16,7 @@ RSpec.describe Karafka::Interchanger do
   let(:params_batch) do
     instance_double(
       Karafka::Params::ParamsBatch,
-      parsed: parsed_params_batch
+      to_a: array_params_batch
     )
   end
 
@@ -24,7 +24,7 @@ RSpec.describe Karafka::Interchanger do
     it 'expects to be able to encode and decode and remain structure' do
       encoded = described_class.encode(params_batch)
       decoded = described_class.decode(encoded)
-      expect(decoded).to eq parsed_params_batch
+      expect(decoded).to eq array_params_batch
     end
   end
 
@@ -32,7 +32,7 @@ RSpec.describe Karafka::Interchanger do
     it 'expects to be able to encode and decode and remain structure' do
       encoded = described_class.encode(params_batch).to_json
       decoded = described_class.decode(JSON.parse(encoded))
-      expect(decoded[0].to_a - parsed_params_batch[0].to_a).to be_empty
+      expect(decoded[0].to_a - array_params_batch[0].to_a).to be_empty
     end
   end
 end

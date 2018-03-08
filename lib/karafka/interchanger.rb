@@ -9,23 +9,17 @@ module Karafka
   #   - decode - decoded params back to a hash format that we can use
   #
   # This interchanger uses default Sidekiq options to exchange data
-  # @note Since we use symbols for Karafka params (performance reasons), they will be
-  #   deserialized into string versions. Keep that in mind.
   class Interchanger
     class << self
       # @param params_batch [Karafka::Params::ParamsBatch] Karafka params batch object
-      # @return [Karafka::Params::ParamsBatch] parsed params batch. There are too many problems
-      #   with passing unparsed data from Karafka to Sidekiq, to make it a default. In case you
-      #   need this, please implement your own interchanger.
+      # @return [Array<Karafka::Params::Params>] Array with hash/hashwithindiff values that will
+      #   be serialized using Sidekiq serialization engine
       def encode(params_batch)
-        params_batch.parsed
+        params_batch.to_a
       end
 
       # @param params_batch [Array<Hash>] Sidekiq params that are now an array
-      # @note Since Sidekiq does not like symbols, we restore symbolized keys for system keys, so
-      #   everything can work as expected. Keep in mind, that custom data will always be assigned
-      #   with string keys per design. To change it, please change this interchanger and create
-      #   your own custom parser
+      # @return [Array<Hash>] exactly what we've fetched from Sidekiq
       def decode(params_batch)
         params_batch
       end

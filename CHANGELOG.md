@@ -4,7 +4,6 @@
 - ```#load``` and ```#parse``` are renamed to ```#encode``` and ```#decode``` in interchangers
 - #274 - Rename controllers to consumers
 - Karafka 1.2 support
-- Parse data before pushing to Sidekiq
 
 ## 1.1
 - Ruby 2.4.2 support
