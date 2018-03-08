@@ -7,7 +7,7 @@ RSpec.describe Karafka::Interchanger do
     [
       {
         'value' => 1,
-        'parser' => Class,
+        'parser' => 'Class',
         'receive_time' => 1,
         'a' => 1
       }
@@ -25,6 +25,14 @@ RSpec.describe Karafka::Interchanger do
       encoded = described_class.encode(params_batch)
       decoded = described_class.decode(encoded)
       expect(decoded).to eq parsed_params_batch
+    end
+  end
+
+  describe 'json serialized later params batch' do
+    it 'expects to be able to encode and decode and remain structure' do
+      encoded = described_class.encode(params_batch).to_json
+      decoded = described_class.decode(JSON.parse(encoded))
+      expect(decoded[0].to_a - parsed_params_batch[0].to_a).to be_empty
     end
   end
 end

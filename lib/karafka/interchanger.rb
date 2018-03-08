@@ -8,25 +8,26 @@ module Karafka
   #   - encode - it is meant to encode params before they get stored inside Redis
   #   - decode - decoded params back to a hash format that we can use
   #
-  # This interchanger is not the fastets but it handles many unusual cases and deals well with
-  # more complex Ruby and Rails objects
+  # This interchanger uses default Sidekiq options to exchange data
+  # @note Since we use symbols for Karafka params (performance reasons), they will be
+  #   deserialized into string versions. Keep that in mind.
   class Interchanger
     class << self
       # @param params_batch [Karafka::Params::ParamsBatch] Karafka params batch object
-      # @note Params might not be parsed because of lazy loading feature. If you implement your
-      #   own interchanger logic, this method needs to return data that can be converted to
-      #   json with default Sidekiqs logic
-      # @return [String] parsed params batch encoded into a string. There are too many problems
+      # @return [Karafka::Params::ParamsBatch] parsed params batch. There are too many problems
       #   with passing unparsed data from Karafka to Sidekiq, to make it a default. In case you
       #   need this, please implement your own interchanger.
       def encode(params_batch)
-        Base64.encode64(Marshal.dump(params_batch.parsed))
+        params_batch.parsed
       end
 
-      # @param params_batch [String] Encoded params batch string that we use to rebuild params
-      # @return [Karafka::Params::ParamsBatch] rebuilt params batch
+      # @param params_batch [Array<Hash>] Sidekiq params that are now an array
+      # @note Since Sidekiq does not like symbols, we restore symbolized keys for system keys, so
+      #   everything can work as expected. Keep in mind, that custom data will always be assigned
+      #   with string keys per design. To change it, please change this interchanger and create
+      #   your own custom parser
       def decode(params_batch)
-        Marshal.load(Base64.decode64(params_batch))
+        params_batch
       end
     end
   end

@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.description = 'Karafka Sidekiq backend for background messages processing'
   spec.license     = 'MIT'
 
-  spec.add_dependency 'karafka', '>= 1.2.0.beta2'
+  spec.add_dependency 'karafka', '>= 1.2.0.beta4'
   spec.add_dependency 'sidekiq', '>= 4.2'
   spec.required_ruby_version = '>= 2.3.0'
 

@@ -95,12 +95,6 @@ Custom interchangers target issues with non-standard (binary, etc.) data that we
 
 **Warning**: if you decide to use slow interchangers, they might significantly slow down Karafka.
 
-**Security warning**: By design, the default interchanger can deserialize almost any class loaded into the Ruby process. In many cases this can lead to remote code execution if the Marshal data is loaded from an untrusted source.
-
-As a result, default interchanger is not suitable as a general purpose serialization format and you should never unmarshal user supplied input or other untrusted data.
-
-If you need to deserialize untrusted data, use JSON or another serialization format that is only able to load simple, "primitive" types such as String, Array, Hash, etc. Never allow user input to specify arbitrary types to deserialize into.
-
 ## References
 
 * [Karafka framework](https://github.com/karafka/karafka)

@@ -1,8 +1,7 @@
 # Karafka Sidekiq Backend
 
-## 1.2.0.beta3
+## 1.2.0.beta4
 - ```#load``` and ```#parse``` are renamed to ```#encode``` and ```#decode``` in interchangers
-- Default interchanger is not Base64 Marshal dump
 - #274 - Rename controllers to consumers
 - Karafka 1.2 support
 - Parse data before pushing to Sidekiq
