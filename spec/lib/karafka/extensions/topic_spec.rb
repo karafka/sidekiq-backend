@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Karafka::Routing::Topic do
-  subject(:topic) { described_class.new(name, consumer_group) }
+RSpec.describe Karafka::Extensions::SidekiqTopicAttributes do
+  subject(:topic) { Karafka::Routing::Topic.new(name, consumer_group) }
 
   let(:consumer_group) { instance_double(Karafka::Routing::ConsumerGroup, id: group_id) }
   let(:name) { :test }
