@@ -14,15 +14,15 @@ RSpec.describe Karafka::Extensions::SidekiqTopicAttributes do
   end
 
   describe '#build' do
-    Karafka::AttributesMap.topic.each do |attr|
+    # backend and name are defined always automatically
+    (Karafka::AttributesMap.topic - %i[name backend]).each do |attr|
       context "for #{attr}" do
         let(:attr_value) { attr == :backend ? :inline : rand.to_s }
 
         it 'expect to invoke it and store' do
-          # Some values are build from other, so we add at least once as they
-          # might be used internally
-          expect(topic).to receive(attr).and_return(attr_value).at_least(:once)
+          expect(topic.instance_variable_defined?(:"@#{attr}")).to be false
           topic.build
+          expect(topic.instance_variable_defined?(:"@#{attr}")).to be true
         end
       end
     end

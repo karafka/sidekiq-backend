@@ -19,9 +19,9 @@ RSpec.describe Karafka::Workers::Builder do
     let(:base) { Karafka::BaseWorker }
 
     before do
-      allow(builder)
-        .to receive(:base)
-        .and_return(base)
+      allow(Karafka::BaseWorker)
+        .to receive(:subclasses)
+        .and_return([base])
     end
 
     context 'when the worker class already exists' do
