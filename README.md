@@ -85,7 +85,7 @@ Note that even then, you need to specify a controller that will schedule a backg
 Custom workers need to provide a ```#perform_async``` method. It needs to accept two arguments:
 
  - ```topic_id``` - first argument is a current topic id from which a given message comes
- - ```params_batch``` - all the params that came from Kafka + additional metadata. This data format might be changed if you use custom interchangers. Otherwise it will be an instance of Karafka::Params::ParamsBatch.
+ - ```params_batch``` - all the params that came from Kafka + additional metadata. This data format might be changed if you use custom interchangers. Otherwise, it will be an instance of Karafka::Params::ParamsBatch.
 
 **Note**: If you use custom interchangers, keep in mind, that params inside params batch might be in two states: parsed or unparsed when passed to #perform_async. This means, that if you use custom interchangers and/or custom workers, you might want to look into Karafka's sources to see exactly how it works.
 
@@ -105,7 +105,7 @@ Custom interchangers target issues with non-standard (binary, etc.) data that we
 
 First, thank you for considering contributing to Karafka! It's people like you that make the open source community such a great community!
 
-Each pull request must pass all the rspec specs and meet our quality requirements.
+Each pull request must pass all the RSpec specs and meet our quality requirements.
 
 To check if everything is as it should be, we use [Coditsu](https://coditsu.io) that combines multiple linters and code analyzers for both code and documentation. Once you're done with your changes, submit a pull request.
 
