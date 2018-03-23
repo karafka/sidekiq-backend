@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    karafka-sidekiq-backend (1.2.0.beta4)
-      karafka (>= 1.2.0.beta4)
+    karafka-sidekiq-backend (1.2.0)
+      karafka (~> 1.2)
       sidekiq (>= 4.2)
 
 GEM
@@ -57,13 +57,13 @@ GEM
       dry-equalizer (~> 0.2)
       dry-logic (~> 0.4, >= 0.4.0)
       dry-types (~> 0.12.0)
-    envlogic (1.0.4)
-      activesupport
+    envlogic (1.1.0)
+      dry-inflector (~> 0.1)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
     json (2.1.0)
-    karafka (1.2.0.beta4)
+    karafka (1.2.0)
       activesupport (>= 4.0)
       dry-configurable (~> 0.7)
       dry-inflector (~> 0.1.1)
@@ -79,11 +79,11 @@ GEM
     king_konf (0.1.10)
     minitest (5.11.3)
     multi_json (1.13.1)
-    null-logger (0.1.4)
+    null-logger (0.1.5)
     rack (2.0.4)
     rack-protection (2.0.1)
       rack
-    rake (12.3.0)
+    rake (12.3.1)
     redis (4.0.1)
     require_all (2.0.0)
     rouge (2.2.1)

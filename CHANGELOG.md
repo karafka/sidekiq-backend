@@ -1,6 +1,6 @@
 # Karafka Sidekiq Backend
 
-## 1.2.0.beta4
+## 1.2.0
 - ```#load``` and ```#parse``` are renamed to ```#encode``` and ```#decode``` in interchangers
 - #274 - Rename controllers to consumers
 - Karafka 1.2 support
