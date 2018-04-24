@@ -80,7 +80,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     null-logger (0.1.5)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-protection (2.0.1)
       rack
     rake (12.3.1)
