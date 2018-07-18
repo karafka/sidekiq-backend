@@ -1,6 +1,6 @@
 # Karafka Sidekiq Backend
 
-[![Build Status](https://travis-ci.org/karafka/sidekiq-backend.png)](https://travis-ci.org/karafka/karafka-sidekiq-backend)
+[![Build Status](https://travis-ci.org/karafka/sidekiq-backend.png)](https://travis-ci.org/karafka/sidekiq-backend)
 [![Join the chat at https://gitter.im/karafka/karafka](https://badges.gitter.im/karafka/karafka.svg)](https://gitter.im/karafka/karafka?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Karafka Sidekiq Backend](https://github.com/karafka/sidekiq-backend) provides support for consuming (processing) received Kafka messages inside of Sidekiq workers.
@@ -92,6 +92,35 @@ Custom workers need to provide a ```#perform_async``` method. It needs to accept
 ### Interchangers
 
 Custom interchangers target issues with non-standard (binary, etc.) data that we want to store when we do ```#perform_async```. This data might be corrupted when fetched in a worker (see [this](https://github.com/karafka/karafka/issues/30) issue). With custom interchangers, you can encode/compress data before it is being passed to scheduling and decode/decompress it when it gets into the worker.
+
+To specify the interchanger for a topic, specify the interchanger inside routes like this:
+
+```
+App.routes.draw do
+  consumer_group :videos_consumer do
+    topic :binary_video_details do
+      controller Videos::DetailsController
+      interchanger Interchangers::MyCustomInterchanger
+    end
+  end
+end
+```
+Each custom interchanger should define `encode` to encode params before they get stored in Redis, and `decode` to convert the params to hash format, as shown below:
+
+```
+class Base64Interchanger
+  class << self
+    def encode(params)
+      Base64.encode64(Marshal.dump(params))
+    end
+
+    def decode(params)
+      Marshal.load(Base64.decode64(params))
+    end
+  end
+end
+
+```
 
 **Warning**: if you decide to use slow interchangers, they might significantly slow down Karafka.
 
