@@ -167,7 +167,7 @@ RSpec.describe Karafka::Routing::Builder do
         end
       end
 
-      it { expect { invalid_route }.to raise_error(Karafka::Errors::InvalidConfiguration) }
+      it { expect { invalid_route }.to raise_error(Karafka::Errors::InvalidConfigurationError) }
     end
   end
 

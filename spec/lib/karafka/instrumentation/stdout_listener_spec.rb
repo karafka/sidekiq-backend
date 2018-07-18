@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Karafka::Instrumentation::Listener do
+RSpec.describe Karafka::Instrumentation::StdoutListener do
   let(:event) { Dry::Events::Event.new(rand, payload) }
   let(:time) { rand }
   let(:topic) { instance_double(Karafka::Routing::Topic, name: topic_name) }

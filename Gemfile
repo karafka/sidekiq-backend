@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+gem 'karafka', github: 'karafka/karafka', branch: '1.3-wip'
+
 gemspec
 
 group :development, :test do

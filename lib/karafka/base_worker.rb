@@ -24,7 +24,7 @@ module Karafka
     #   with params_batch assigned already (consumer is ready to use)
     def consumer(topic_id, params_batch)
       topic = Karafka::Routing::Router.find(topic_id)
-      consumer = topic.consumer.new
+      consumer = topic.consumer.new(topic)
       consumer.params_batch = topic.interchanger.decode(params_batch)
       consumer
     end
