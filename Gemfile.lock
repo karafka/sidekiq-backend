@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/karafka/karafka.git
+  remote: https://github.com/karafka/karafka
   revision: 2eee0c48eadbc9dadb36557433c50af4ee9d617c
   branch: 1.3-wip
   specs:
