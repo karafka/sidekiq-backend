@@ -45,7 +45,7 @@ or on a per topic level:
 App.routes.draw do
   consumer_group :videos_consumer do
     topic :binary_video_details do
-      controller Videos::DetailsController
+      consumer Videos::DetailsConsumer
       worker Workers::DetailsWorker
       interchanger Interchangers::MyCustomInterchanger
     end
@@ -53,7 +53,7 @@ App.routes.draw do
 end
 ```
 
-You don't need to do anything beyond that. Karafka will know, that you want to run your controllers ```#perform``` method in a background job.
+You don't need to do anything beyond that. Karafka will know, that you want to run your consumer's ```#consume``` method in a background job.
 
 ## Configuration
 
@@ -67,7 +67,7 @@ There are two options you can set inside of the ```topic``` block:
 
 ### Workers
 
-Karafka by default will build a worker that will correspond to each of your controllers (so you will have a pair - controller and a worker). All of them will inherit from ```ApplicationWorker``` and will share all its settings.
+Karafka by default will build a worker that will correspond to each of your consumers (so you will have a pair - consumer and a worker). All of them will inherit from ```ApplicationWorker``` and will share all its settings.
 
 To run Sidekiq you should have sidekiq.yml file in *config* folder. The example of ```sidekiq.yml``` file will be generated to config/sidekiq.yml.example once you run ```bundle exec karafka install```.
 
@@ -75,12 +75,12 @@ However, if you want to use a raw Sidekiq worker (without any Karafka additional
 
 ```ruby
 topic :incoming_messages do
-  controller MessagesController
+  consumer MessagesConsumer
   worker MyCustomWorker
 end
 ```
 
-Note that even then, you need to specify a controller that will schedule a background task.
+Note that even then, you need to specify a consumer that will schedule a background task.
 
 Custom workers need to provide a ```#perform_async``` method. It needs to accept two arguments:
 
@@ -99,7 +99,7 @@ To specify the interchanger for a topic, specify the interchanger inside routes 
 App.routes.draw do
   consumer_group :videos_consumer do
     topic :binary_video_details do
-      controller Videos::DetailsController
+      consumer Videos::DetailsConsumer
       interchanger Interchangers::MyCustomInterchanger
     end
   end
