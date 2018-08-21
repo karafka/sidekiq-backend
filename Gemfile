@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'karafka', git: 'https://github.com/karafka/karafka', branch: '1.3-wip'
+gem 'waterdrop', git: 'https://github.com/karafka/waterdrop', branch: '1.3-wip'
 
 gemspec
 
