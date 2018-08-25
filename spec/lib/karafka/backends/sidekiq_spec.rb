@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Karafka::Backends::Sidekiq do
-  subject(:consumer) { consumer_class.new }
+  subject(:consumer) { consumer_class.new(topic) }
 
   let(:consumer_class) { Class.new(Karafka::BaseConsumer) }
   let(:interchanger) { Karafka::Interchanger }
@@ -22,7 +22,6 @@ RSpec.describe Karafka::Backends::Sidekiq do
 
   before do
     consumer_class.include(described_class)
-    consumer_class.topic = topic
     consumer.params_batch = params_batch
 
     allow(interchanger)

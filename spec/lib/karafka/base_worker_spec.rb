@@ -3,14 +3,29 @@
 RSpec.describe Karafka::BaseWorker do
   subject(:base_worker) { described_class.new }
 
-  let(:consumer_instance) { consumer.new }
+  let(:consumer_instance) { consumer.new(topic) }
   let(:args) { [rand.to_s, rand] }
+  let(:topic_id) { rand.to_s }
+  let(:interchanger) { double }
+  let(:params_batch) { double }
+  let(:interchanged_params) { double }
   let(:consumer) do
     ClassBuilder.inherit(Karafka::BaseConsumer) do
       def consume
         self
       end
     end
+  end
+  let(:topic) do
+    instance_double(
+      Karafka::Routing::Topic,
+      interchanger: interchanger,
+      consumer: consumer,
+      backend: :sidekiq,
+      batch_consuming: false,
+      responder: nil,
+      parser: nil
+    )
   end
 
   describe '#perform' do
@@ -29,25 +44,7 @@ RSpec.describe Karafka::BaseWorker do
   end
 
   describe '#consumer' do
-    let(:topic_id) { rand.to_s }
-    let(:interchanger) { double }
-    let(:params_batch) { double }
-    let(:interchanged_params) { double }
-    let(:topic) do
-      instance_double(
-        Karafka::Routing::Topic,
-        interchanger: interchanger,
-        consumer: consumer,
-        backend: :sidekiq,
-        batch_consuming: false,
-        responder: nil,
-        parser: nil
-      )
-    end
-
     before do
-      consumer.topic = topic
-
       allow(Karafka::Routing::Router)
         .to receive(:find)
         .with(topic_id)
