@@ -23,6 +23,7 @@ module Karafka
       #   build #=> Videos::NewVideosWorker
       def build
         return matcher.match if matcher.match
+
         klass = Class.new(base)
         matcher.scope.const_set(matcher.name, klass)
       end
