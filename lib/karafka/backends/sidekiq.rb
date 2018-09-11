@@ -5,7 +5,7 @@ module Karafka
     # Sidekiq backend that schedules stuff to Sidekiq worker for delayed execution
     module Sidekiq
       # Karafka Sidekiq backend version
-      VERSION = '1.2.0'
+      VERSION = '1.3.0'
 
       # Enqueues the execution of perform method into a worker.
       # @note Each worker needs to have a class #perform_async method that will allow us to pass
