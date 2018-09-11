@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Karafka::Consumers::Includer do
-  subject(:includer) { described_class.new }
+  subject(:includer) { described_class.new(topic) }
 
   let(:consumer) { Class.new(Karafka::BaseConsumer).new(topic) }
   let(:features_scope) { Karafka::Consumers }
@@ -16,9 +16,7 @@ RSpec.describe Karafka::Consumers::Includer do
     )
   end
 
-  #before { consumer.topic = topic }
-
-  describe 'inline with batch processing' do
+  describe 'inline with batch consuming' do
     let(:backend) { :inline }
     let(:batch_consuming) { true }
     let(:responder) { nil }
@@ -29,7 +27,7 @@ RSpec.describe Karafka::Consumers::Includer do
     it { expect(consumer_singleton.include?(features_scope::Responders)).to eq false }
   end
 
-  describe 'inline without batch processing' do
+  describe 'inline without batch consuming' do
     let(:backend) { :inline }
     let(:batch_consuming) { false }
     let(:responder) { nil }
