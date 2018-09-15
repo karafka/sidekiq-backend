@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module Karafka
-  # Namespace for additional extensions that we include into some Karafka components, to gain
-  # extra features that we require
   module Extensions
     # Additional Karafka::Routing::Topic methods that are required to work with Sidekiq backend
     module SidekiqTopicAttributes
