@@ -1,5 +1,8 @@
 # Karafka Sidekiq Backend
 
+## 1.3.0
+- Sync with Karafka: metadata support
+
 ## 1.2.0
 - ```#load``` and ```#parse``` are renamed to ```#encode``` and ```#decode``` in interchangers
 - #274 - Rename controllers to consumers
