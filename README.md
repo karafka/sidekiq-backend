@@ -110,12 +110,12 @@ Each custom interchanger should define `encode` to encode params before they get
 ```
 class Base64Interchanger
   class << self
-    def encode(params)
-      Base64.encode64(Marshal.dump(params))
+    def encode(params_batch)
+      Base64.encode64(Marshal.dump(params_batch.to_a))
     end
 
-    def decode(params)
-      Marshal.load(Base64.decode64(params))
+    def decode(params_string)
+      Marshal.load(Base64.decode64(params_string))
     end
   end
 end
