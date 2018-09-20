@@ -111,6 +111,8 @@ Each custom interchanger should define `encode` to encode params before they get
 class Base64Interchanger
   class << self
     def encode(params_batch)
+      # Note, that you need to cast the params_batch to an array in order to get it work
+      # in sidekiq later
       Base64.encode64(Marshal.dump(params_batch.to_a))
     end
 
