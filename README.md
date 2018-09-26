@@ -95,7 +95,7 @@ Custom interchangers target issues with non-standard (binary, etc.) data that we
 
 To specify the interchanger for a topic, specify the interchanger inside routes like this:
 
-```
+```ruby
 App.routes.draw do
   consumer_group :videos_consumer do
     topic :binary_video_details do
@@ -107,15 +107,17 @@ end
 ```
 Each custom interchanger should define `encode` to encode params before they get stored in Redis, and `decode` to convert the params to hash format, as shown below:
 
-```
+```ruby
 class Base64Interchanger
   class << self
-    def encode(params)
-      Base64.encode64(Marshal.dump(params))
+    def encode(params_batch)
+      # Note, that you need to cast the params_batch to an array in order to get it work
+      # in sidekiq later
+      Base64.encode64(Marshal.dump(params_batch.to_a))
     end
 
-    def decode(params)
-      Marshal.load(Base64.decode64(params))
+    def decode(params_string)
+      Marshal.load(Base64.decode64(params_string))
     end
   end
 end
