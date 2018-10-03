@@ -17,7 +17,7 @@ module Karafka
           topic.worker.perform_async(
             topic.id,
             topic.interchanger.encode(params_batch),
-            topic.interchanger.encode(metadata)
+            respond_to?(:metadata) ? topic.interchanger.encode(metadata) : nil
           )
         end
       end
