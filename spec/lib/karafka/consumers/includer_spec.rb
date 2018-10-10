@@ -12,7 +12,8 @@ RSpec.describe Karafka::Consumers::Includer do
       Karafka::Routing::Topic,
       backend: backend,
       batch_consuming: batch_consuming,
-      responder: responder
+      responder: responder,
+      batch_fetching: true
     )
   end
 

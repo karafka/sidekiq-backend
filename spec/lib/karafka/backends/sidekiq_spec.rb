@@ -14,6 +14,7 @@ RSpec.describe Karafka::Backends::Sidekiq do
       interchanger: interchanger,
       backend: :sidekiq,
       batch_consuming: true,
+      batch_fetching: false,
       responder: nil,
       parser: nil,
       worker: Class.new(Karafka::BaseWorker)
