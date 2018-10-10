@@ -2,14 +2,18 @@
 
 module Karafka
   module Extensions
+    # Extension for rebuilding params from a hash
     module ParamsBuilder
+      # Buils params from a hash
+      # @param hash [Hash] hash with params details
+      # @param topic [Karafka::Routing::Topic] topic for which we build the params
+      # @return [Karafka::Params::Params] built params
       def from_hash(hash, topic)
-        Karafka::Params::Params.new
+        Karafka::Params::Params
+          .new
           .merge!(hash)
           .merge!('parser' => topic.parser)
       end
     end
   end
 end
-
-Karafka::Params::Builders::Params.extend Karafka::Extensions::ParamsBuilder

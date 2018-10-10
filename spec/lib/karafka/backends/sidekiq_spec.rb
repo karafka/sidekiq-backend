@@ -30,9 +30,15 @@ RSpec.describe Karafka::Backends::Sidekiq do
       .and_return(interchanged_data)
   end
 
-  it 'expect to schedule with sidekiq using interchanged data' do
-    expect(topic.worker).to receive(:perform_async)
-      .with(topic.id, interchanged_data)
-    consumer.call
+  context 'when metadata is available for the consumer instance' do
+    pending
+  end
+
+  context 'when metadata is not available for the consumer instance' do
+    it 'expect to schedule with sidekiq using interchanged data' do
+      expect(topic.worker).to receive(:perform_async)
+        .with(topic.id, interchanged_data, nil)
+      consumer.call
+    end
   end
 end

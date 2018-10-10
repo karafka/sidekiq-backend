@@ -82,7 +82,7 @@ RSpec.describe Karafka::Extensions::SidekiqTopicAttributes do
       let(:interchanger) { nil }
 
       it 'expect to use default one' do
-        expect(topic.interchanger).to eq Karafka::Interchanger
+        expect(topic.interchanger).to be_a Karafka::Interchanger
       end
     end
 

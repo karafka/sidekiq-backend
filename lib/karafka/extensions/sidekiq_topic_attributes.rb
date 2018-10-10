@@ -14,7 +14,7 @@ module Karafka
       # @return [Class] Interchanger class (not an instance) that we want to use to interchange
       #   params between Karafka server and Karafka background job
       def interchanger
-        @interchanger ||= Karafka::Interchanger
+        @interchanger ||= Karafka::Interchanger.new
       end
 
       # Creates attributes writers for worker and interchanger, so they can be overwritten
@@ -26,5 +26,3 @@ module Karafka
     end
   end
 end
-
-Karafka::Routing::Topic.include Karafka::Extensions::SidekiqTopicAttributes

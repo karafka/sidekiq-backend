@@ -27,11 +27,17 @@ module Karafka
       topic = Karafka::Routing::Router.find(topic_id)
       consumer = topic.consumer.new(topic)
       consumer.params_batch = Params::Builders::ParamsBatch.from_array(
-        topic.interchanger.decode(params_batch), topic
+        topic.interchanger.decode(params_batch),
+        topic
       )
-      consumer.metadata = Params::Builders::Metadata.from_hash(
-        topic.interchanger.decode(metadata), topic
-      )
+
+      if topic.batch_fetching
+        consumer.metadata = Params::Builders::Metadata.from_hash(
+          metadata,
+          topic
+        )
+      end
+
       consumer
     end
   end
