@@ -121,7 +121,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
-    ruby-kafka (0.7.2)
+    ruby-kafka (0.7.3)
       digest-crc
     sidekiq (5.2.2)
       connection_pool (~> 2.2, >= 2.2.2)
@@ -134,6 +134,7 @@ GEM
     simplecov-html (0.10.2)
     thor (0.20.0)
     thread_safe (0.3.6)
+    thread_safe (0.3.6-java)
     timecop (0.9.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
@@ -151,4 +152,4 @@ DEPENDENCIES
   waterdrop!
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
