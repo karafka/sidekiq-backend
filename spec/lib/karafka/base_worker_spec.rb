@@ -57,8 +57,13 @@ RSpec.describe Karafka::BaseWorker do
     end
 
     context 'when batch_fetching is off' do
+      before do
+        allow(Karafka::Params::Builders::ParamsBatch)
+          .to receive(:from_array)
+          .and_return(interchanged_params)
+      end
+
       it 'expect to use router to pick consumer, assign params_batch and return' do
-        expect(Karafka::Params::Builders::ParamsBatch).to receive(:from_array).and_return(interchanged_params)
         expect(interchanger).to receive(:decode).with(params_batch).and_return(interchanged_params)
         expect(consumer_instance).to receive(:params_batch=).with(interchanged_params)
         expect(base_worker.send(:consumer, topic_id, params_batch, nil)).to eq consumer_instance
