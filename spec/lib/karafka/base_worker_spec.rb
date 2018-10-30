@@ -57,21 +57,60 @@ RSpec.describe Karafka::BaseWorker do
     end
 
     context 'when batch_fetching is off' do
+      let(:initialized_consumer) { base_worker.send(:consumer, topic_id, params_batch, nil) }
+
       before do
         allow(Karafka::Params::Builders::ParamsBatch)
           .to receive(:from_array)
           .and_return(interchanged_params)
+        allow(interchanger)
+          .to receive(:decode)
+          .with(params_batch)
+          .and_return(interchanged_params)
       end
 
       it 'expect to use router to pick consumer, assign params_batch and return' do
-        expect(interchanger).to receive(:decode).with(params_batch).and_return(interchanged_params)
         expect(consumer_instance).to receive(:params_batch=).with(interchanged_params)
-        expect(base_worker.send(:consumer, topic_id, params_batch, nil)).to eq consumer_instance
+        expect(initialized_consumer).to eq consumer_instance
+      end
+
+      it 'expect not to restore metadata' do
+        expect(initialized_consumer).not_to respond_to(:metadata)
       end
     end
 
     context 'when batch_fetching is on' do
-      pending
+      let(:initialized_consumer) { base_worker.send(:consumer, topic_id, params_batch, metadata) }
+      let(:metadata) { { rand => rand } }
+      let(:topic) do
+        instance_double(
+          Karafka::Routing::Topic,
+          interchanger: interchanger,
+          consumer: consumer,
+          backend: :sidekiq,
+          batch_consuming: false,
+          responder: nil,
+          parser: nil,
+          batch_fetching: true
+        )
+      end
+
+      before do
+        allow(Karafka::Params::Builders::ParamsBatch)
+          .to receive(:from_array)
+          .and_return(interchanged_params)
+        allow(interchanger)
+          .to receive(:decode)
+          .with(params_batch)
+          .and_return(interchanged_params)
+      end
+
+      it 'expect to use router to pick consumer, assign params_batch and return' do
+        expect(consumer_instance).to receive(:params_batch=).with(interchanged_params)
+        expect(base_worker.send(:consumer, topic_id, params_batch, metadata)).to eq consumer_instance
+      end
+
+      it { expect(initialized_consumer.metadata).to be_a(Karafka::Params::Metadata) }
     end
   end
 end
