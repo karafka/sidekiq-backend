@@ -4,7 +4,7 @@ module Karafka
   module Extensions
     # Extension for metadata builder to allow building metadata from a hash
     module MetadataBuilder
-      # Builds metadat from hash
+      # Builds metadata from hash
       # @param hash [Hash] hash with metadata
       # @param topic [Karafka::Routing::Topic] topic instance
       # @return [Karafka::Params::Metadata] metadata instance
