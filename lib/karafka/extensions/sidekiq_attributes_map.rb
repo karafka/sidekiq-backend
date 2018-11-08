@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Karafka
+  # Extensions for Karafka components
   module Extensions
     # Additional Karafka::Attributes map topic attributes that can be used when worker
     # is active and we use sidekiq backend

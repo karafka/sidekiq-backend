@@ -16,7 +16,8 @@ module Karafka
         Karafka.monitor.instrument('backends.sidekiq.process', caller: self) do
           topic.worker.perform_async(
             topic.id,
-            topic.interchanger.encode(params_batch)
+            topic.interchanger.encode(params_batch),
+            respond_to?(:metadata) ? metadata : nil
           )
         end
       end
