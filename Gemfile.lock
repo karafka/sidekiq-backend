@@ -62,7 +62,6 @@ GEM
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     json (2.1.0)
-    json (2.1.0-java)
     karafka (1.2.8)
       activesupport (>= 4.0)
       dry-configurable (~> 0.7)
@@ -125,7 +124,6 @@ GEM
       ruby-kafka (>= 0.6)
 
 PLATFORMS
-  java
   ruby
 
 DEPENDENCIES
