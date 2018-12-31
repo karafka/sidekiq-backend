@@ -3,6 +3,9 @@
 ## 1.3.0
 - Sync with Karafka: metadata support
 
+## master
+- drop jruby support
+
 ## 1.2.0
 - ```#load``` and ```#parse``` are renamed to ```#encode``` and ```#decode``` in interchangers
 - #274 - Rename controllers to consumers
