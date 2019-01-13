@@ -101,8 +101,9 @@ GEM
     rspec-support (3.8.0)
     ruby-kafka (0.7.4)
       digest-crc
-    sidekiq (5.2.3)
+    sidekiq (5.2.5)
       connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
     simplecov (0.16.1)
