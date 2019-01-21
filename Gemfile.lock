@@ -59,7 +59,7 @@ GEM
       dry-types (~> 0.13.1)
     envlogic (1.1.0)
       dry-inflector (~> 0.1)
-    i18n (1.5.1)
+    i18n (1.5.2)
       concurrent-ruby (~> 1.0)
     json (2.1.0)
     karafka (1.2.9)
@@ -99,10 +99,11 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
-    ruby-kafka (0.7.4)
+    ruby-kafka (0.7.5)
       digest-crc
-    sidekiq (5.2.3)
+    sidekiq (5.2.5)
       connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
     simplecov (0.16.1)
@@ -133,4 +134,4 @@ DEPENDENCIES
   timecop
 
 BUNDLED WITH
-   1.17.3
+   2.0.1
