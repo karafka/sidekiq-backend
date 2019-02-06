@@ -7,7 +7,7 @@ RSpec.describe Karafka::Interchanger do
     [
       {
         'value' => 1,
-        'parser' => 'Class',
+        'deserializer' => 'Class',
         'receive_time' => 1,
         'a' => 1
       }

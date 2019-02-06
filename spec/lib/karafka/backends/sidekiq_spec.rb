@@ -16,7 +16,7 @@ RSpec.describe Karafka::Backends::Sidekiq do
       batch_consuming: true,
       batch_fetching: false,
       responder: nil,
-      parser: nil,
+      deserializer: nil,
       worker: Class.new(Karafka::BaseWorker)
     )
   end

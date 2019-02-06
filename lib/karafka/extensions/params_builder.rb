@@ -12,7 +12,7 @@ module Karafka
         Karafka::Params::Params
           .new
           .merge!(hash)
-          .merge!('parser' => topic.parser)
+          .merge!('deserializer' => topic.deserializer)
       end
     end
   end

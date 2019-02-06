@@ -24,7 +24,7 @@ RSpec.describe Karafka::BaseWorker do
       backend: :sidekiq,
       batch_consuming: false,
       responder: nil,
-      parser: nil,
+      deserializer: nil,
       batch_fetching: false
     )
   end
@@ -90,7 +90,7 @@ RSpec.describe Karafka::BaseWorker do
           backend: :sidekiq,
           batch_consuming: false,
           responder: nil,
-          parser: nil,
+          deserializer: nil,
           batch_fetching: true
         )
       end

@@ -14,7 +14,7 @@ module Karafka
         Karafka::Params::Metadata
           .new
           .merge!(hash)
-          .merge!('parser' => topic.parser)
+          .merge!('deserializer' => topic.deserializer)
       end
     end
   end

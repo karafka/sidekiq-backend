@@ -6,7 +6,7 @@ RSpec.describe Karafka::Extensions::ParamsBatchBuilder do
 
     let(:hash) { { 'key' => rand } }
     let(:array) { [hash] }
-    let(:topic) { instance_double(Karafka::Routing::Topic, parser: Class.new) }
+    let(:topic) { instance_double(Karafka::Routing::Topic, deserializer: Class.new) }
 
     it { is_expected.to be_a(Karafka::Params::ParamsBatch) }
 
