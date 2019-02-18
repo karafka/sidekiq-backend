@@ -26,6 +26,10 @@ end
 
 # Uses Karafka loader to load all the sources that this backend needs
 Karafka::Loader.load!(Karafka::Backends::Sidekiq.core_root)
+Karafka::Params::Builders::Params.extend(Karafka::Extensions::ParamsBuilder)
+Karafka::Params::Builders::ParamsBatch.extend(Karafka::Extensions::ParamsBatchBuilder)
+Karafka::Params::Builders::Metadata.extend(Karafka::Extensions::MetadataBuilder)
+Karafka::Routing::Topic.include(Karafka::Extensions::SidekiqTopicAttributes)
 Karafka::AttributesMap.prepend(Karafka::Extensions::SidekiqAttributesMap)
 # Register internal events for instrumentation
 %w[

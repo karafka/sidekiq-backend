@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Karafka::Backends::Sidekiq do
-  subject(:consumer) { consumer_class.new }
+  subject(:consumer) { consumer_class.new(topic) }
 
   let(:consumer_class) { Class.new(Karafka::BaseConsumer) }
   let(:interchanger) { Karafka::Interchanger }
@@ -14,15 +14,15 @@ RSpec.describe Karafka::Backends::Sidekiq do
       interchanger: interchanger,
       backend: :sidekiq,
       batch_consuming: true,
+      batch_fetching: false,
       responder: nil,
-      parser: nil,
+      deserializer: nil,
       worker: Class.new(Karafka::BaseWorker)
     )
   end
 
   before do
     consumer_class.include(described_class)
-    consumer_class.topic = topic
     consumer.params_batch = params_batch
 
     allow(interchanger)
@@ -31,9 +31,15 @@ RSpec.describe Karafka::Backends::Sidekiq do
       .and_return(interchanged_data)
   end
 
-  it 'expect to schedule with sidekiq using interchanged data' do
-    expect(topic.worker).to receive(:perform_async)
-      .with(topic.id, interchanged_data)
-    consumer.call
+  context 'when metadata is available for the consumer instance' do
+    pending
+  end
+
+  context 'when metadata is not available for the consumer instance' do
+    it 'expect to schedule with sidekiq using interchanged data' do
+      expect(topic.worker).to receive(:perform_async)
+        .with(topic.id, interchanged_data, nil)
+      consumer.call
+    end
   end
 end

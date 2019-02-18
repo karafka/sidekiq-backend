@@ -6,7 +6,7 @@ RSpec.describe Karafka::Routing::Builder do
   ATTRIBUTES = %i[
     consumer
     worker
-    parser
+    deserializer
     interchanger
     responder
   ].freeze
@@ -29,7 +29,7 @@ RSpec.describe Karafka::Routing::Builder do
             backend :inline
             name 'name1'
             worker :worker1
-            parser :parser1
+            deserializer :deserializer1
             interchanger :interchanger1
             responder :responder1
           end
@@ -42,7 +42,7 @@ RSpec.describe Karafka::Routing::Builder do
             backend :inline
             name 'name2'
             worker :worker2
-            parser :parser2
+            deserializer :deserializer2
             interchanger :interchanger2
             responder :responder2
           end
@@ -81,7 +81,7 @@ RSpec.describe Karafka::Routing::Builder do
               backend :inline
               name 'name1'
               worker :worker1
-              parser :parser1
+              deserializer :deserializer1
               interchanger :interchanger1
               responder :responder1
             end
@@ -98,7 +98,7 @@ RSpec.describe Karafka::Routing::Builder do
               backend :inline
               name 'name2'
               worker :worker2
-              parser :parser2
+              deserializer :deserializer2
               interchanger :interchanger2
               responder :responder2
             end
@@ -132,7 +132,7 @@ RSpec.describe Karafka::Routing::Builder do
               backend :inline
               name 'name1'
               worker :worker1
-              parser :parser1
+              deserializer :deserializer1
               interchanger :interchanger1
               responder :responder1
             end
@@ -142,7 +142,7 @@ RSpec.describe Karafka::Routing::Builder do
               backend :inline
               name 'name2'
               worker :worker2
-              parser :parser2
+              deserializer :deserializer2
               interchanger :interchanger2
               responder :responder2
             end
@@ -167,7 +167,7 @@ RSpec.describe Karafka::Routing::Builder do
         end
       end
 
-      it { expect { invalid_route }.to raise_error(Karafka::Errors::InvalidConfiguration) }
+      it { expect { invalid_route }.to raise_error(Karafka::Errors::InvalidConfigurationError) }
     end
   end
 

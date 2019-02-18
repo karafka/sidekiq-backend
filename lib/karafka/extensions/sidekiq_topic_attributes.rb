@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module Karafka
-  # Namespace for additional extensions that we include into some Karafka components, to gain
-  # extra features that we require
   module Extensions
     # Additional Karafka::Routing::Topic methods that are required to work with Sidekiq backend
     module SidekiqTopicAttributes
@@ -16,7 +14,7 @@ module Karafka
       # @return [Class] Interchanger class (not an instance) that we want to use to interchange
       #   params between Karafka server and Karafka background job
       def interchanger
-        @interchanger ||= Karafka::Interchanger
+        @interchanger ||= Karafka::Interchanger.new
       end
 
       # Creates attributes writers for worker and interchanger, so they can be overwritten
@@ -28,5 +26,3 @@ module Karafka
     end
   end
 end
-
-Karafka::Routing::Topic.include Karafka::Extensions::SidekiqTopicAttributes

@@ -1,5 +1,9 @@
 # Karafka Sidekiq Backend
 
+## 1.3.0
+- Sync with Karafka: metadata support
+- Sync with Karafka #463 (Split parsers into serializers / deserializers)
+
 ## master
 - drop jruby support
 
