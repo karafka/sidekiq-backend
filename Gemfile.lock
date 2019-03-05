@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/karafka/karafka
-  revision: f000f449dca3788573b9465ecc23ec35d355778d
+  revision: ddf81754a3e450b103b9f8ea9cdef09721b9d35d
   specs:
     karafka (1.3.0)
       dry-configurable (~> 0.8)
@@ -90,7 +90,7 @@ GEM
       dry-types (~> 0.14, >= 0.14)
     envlogic (1.1.0)
       dry-inflector (~> 0.1)
-    i18n (1.5.3)
+    i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     json (2.2.0)
     king_konf (0.3.7)
