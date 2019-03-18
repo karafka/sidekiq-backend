@@ -19,9 +19,9 @@ test: &test
 jobs:
   include:
     - <<: *test
-      rvm: 2.6.1
+      rvm: 2.6.2
     - <<: *test
-      rvm: 2.5.3
+      rvm: 2.5.5
     - <<: *test
       rvm: 2.4.5
     - <<: *test
