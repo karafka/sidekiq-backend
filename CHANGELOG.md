@@ -1,6 +1,7 @@
 # Karafka Sidekiq Backend
 
 ## 1.3.0
+- Drop Ruby 2.3 support
 - Sync with Karafka: metadata support
 - Sync with Karafka #463 (Split parsers into serializers / deserializers)
 
