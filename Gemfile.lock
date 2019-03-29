@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/karafka/karafka
-  revision: 252e9d130e3946ab9ef69cde8f45fab1c518487c
+  revision: ab074ec7e3e61369af8106fd8c78e85e06f22ee6
   specs:
     karafka (1.3.0)
       dry-configurable (~> 0.8)
@@ -37,7 +37,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (5.2.2.1)
+    activesupport (5.2.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
