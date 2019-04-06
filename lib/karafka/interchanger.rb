@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Karafka
-  # Interchangers allow us to format/encode/pack data that is being send to perform_async
+  # Interchanger allows us to format/encode/pack data that is being send to perform_async
   # This is meant to target mostly issues with data encoding like this one:
   # https://github.com/mperham/sidekiq/issues/197
   # Each custom interchanger should implement following methods:
