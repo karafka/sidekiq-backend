@@ -4,6 +4,7 @@
 - Drop Ruby 2.3 support
 - Sync with Karafka: metadata support
 - Sync with Karafka #463 (Split parsers into serializers / deserializers)
+- #26 - Make listeners as instances
 
 ## master
 - drop jruby support

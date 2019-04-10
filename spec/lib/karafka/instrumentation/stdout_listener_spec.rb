@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe Karafka::Instrumentation::StdoutListener do
+  subject(:listener) { described_class.new }
+
   let(:event) { Dry::Events::Event.new(rand, payload) }
   let(:time) { rand }
   let(:topic) { instance_double(Karafka::Routing::Topic, name: topic_name) }
   let(:topic_name) { rand.to_s }
 
   describe '#on_backends_sidekiq_process' do
-    subject(:trigger) { described_class.on_backends_sidekiq_process(event) }
+    subject(:trigger) { listener.on_backends_sidekiq_process(event) }
 
     let(:payload) { { caller: caller, time: time } }
     let(:params_batch) { [1] }
@@ -30,7 +32,7 @@ RSpec.describe Karafka::Instrumentation::StdoutListener do
   end
 
   describe '#on_backends_sidekiq_base_worker_perform' do
-    subject(:trigger) { described_class.on_backends_sidekiq_base_worker_perform(event) }
+    subject(:trigger) { listener.on_backends_sidekiq_base_worker_perform(event) }
 
     let(:time) { rand }
     let(:payload) { { caller: self, time: time, consumer: consumer } }
