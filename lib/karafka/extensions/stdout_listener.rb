@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 module Karafka
-  # Namespace for extensions of Karafka core framework instrumentation
-  module Instrumentation
+  module Extensions
     # Additional methods for listener that listen on instrumentation related to the Sidekiq
     # backend of Karafka
-    class StdoutListener
+    module StdoutListener
       # Logs info about scheduling of a certain dataset with a Sidekiq backend
       # @param event [Dry::Events::Event] event details including payload
       def on_backends_sidekiq_process(event)
