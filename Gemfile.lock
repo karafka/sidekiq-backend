@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/karafka/karafka
-  revision: 14dd2918d788a00262c70f94e714cf7939e89b7b
+  revision: 75d492e5386417232178c656d0c1248bc4e364a1
   specs:
     karafka (1.3.0)
       dry-configurable (~> 0.8)
@@ -11,10 +11,10 @@ GIT
       irb (~> 1.0)
       multi_json (>= 1.12)
       rake (>= 11.3)
-      require_all (>= 1.4)
       ruby-kafka (>= 0.7.1)
       thor (~> 0.20)
       waterdrop (~> 1.3)
+      zeitwerk (~> 2.1)
 
 GIT
   remote: https://github.com/karafka/waterdrop
@@ -103,7 +103,6 @@ GEM
       rack
     rake (12.3.2)
     redis (4.1.0)
-    require_all (2.0.0)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)

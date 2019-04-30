@@ -6,6 +6,7 @@
 - Sync with Karafka: metadata support
 - Sync with Karafka #463 (Split parsers into serializers / deserializers)
 - #26 - Make listeners as instances
+- Zeitwerk integration
 
 ## master
 - drop jruby support

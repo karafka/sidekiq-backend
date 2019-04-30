@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Karafka
+  # Namespace for alternative processing backends for Karafka framework
   module Backends
     # Sidekiq backend that schedules stuff to Sidekiq worker for delayed execution
     module Sidekiq
