@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Karafka::Instrumentation::StdoutListener do
-  subject(:listener) { described_class.new }
+RSpec.describe Karafka::Extensions::StdoutListener do
+  subject(:listener) { Karafka::Instrumentation::StdoutListener.new }
 
   let(:event) { Dry::Events::Event.new(rand, payload) }
   let(:time) { rand }
