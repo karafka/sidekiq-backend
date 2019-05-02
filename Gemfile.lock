@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/karafka/karafka
-  revision: 52115cbc276216a94119b2d61ea544895cec98e5
+  revision: 5ce15861d30b0aaff2e8e60c547f4c15977eb9d3
   specs:
     karafka (1.3.0)
       dry-configurable (~> 0.8)
@@ -133,7 +133,7 @@ GEM
     timecop (0.9.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    zeitwerk (2.1.5)
+    zeitwerk (2.1.6)
 
 PLATFORMS
   ruby
