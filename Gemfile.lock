@@ -102,7 +102,7 @@ GEM
     rack-protection (2.0.5)
       rack
     rake (12.3.2)
-    redis (4.1.0)
+    redis (4.1.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
