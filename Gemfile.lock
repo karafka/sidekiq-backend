@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/karafka/karafka
-  revision: cc0dda48cabdb876e05921328491d470c0ba5309
+  revision: bf66b499cc5b68f2df0cce6a40b236fe771337e4
   specs:
     karafka (1.3.0)
       dry-configurable (~> 0.8)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/karafka/waterdrop
-  revision: ec42285de5a48c051f356bcc535c7df21e56cc5d
+  revision: 2c68baa5b20f08d6fc32abc4bf390615a38becc7
   specs:
     waterdrop (1.3.0)
       delivery_boy (~> 0.2)
