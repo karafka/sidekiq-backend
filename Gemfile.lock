@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/karafka/karafka
-  revision: 24bdfe4d2b7780de4e942c520ee00b00095aab24
+  revision: 070cab46778bbcf25846a305fcddf0ef7bd63232
   specs:
     karafka (1.3.0)
       dry-configurable (~> 0.8)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/karafka/waterdrop
-  revision: 0ab90ec35f83ff093d28770065e1f9519ab37164
+  revision: 454201dbab5bec03d845e57dbc677242f1ddc3fa
   specs:
     waterdrop (1.3.0)
       delivery_boy (~> 0.2)
@@ -102,7 +102,7 @@ GEM
     rack-protection (2.0.5)
       rack
     rake (12.3.2)
-    redis (4.1.1)
+    redis (4.1.2)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
