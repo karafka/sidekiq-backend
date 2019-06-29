@@ -14,9 +14,9 @@ Zeitwerk::Loader
   .for_gem
   .tap { |loader| loader.ignore("#{__dir__}/karafka_sidekiq_backend.rb") }
   .tap { |loader| loader.ignore("#{__dir__}/karafka-sidekiq-backend.rb") }
+  .tap(&:setup)
   .tap(&:eager_load)
   .tap { |loader| loader.preload('lib/') }
-  .tap(&:setup)
 
 Karafka::Params::Builders::Params.extend(Karafka::Extensions::ParamsBuilder)
 Karafka::Params::Builders::ParamsBatch.extend(Karafka::Extensions::ParamsBatchBuilder)
