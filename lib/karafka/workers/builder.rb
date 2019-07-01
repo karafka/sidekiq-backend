@@ -24,19 +24,11 @@ module Karafka
       def build
         return matcher.match if matcher.match
 
-        klass = Class.new(base)
+        klass = Class.new(Karafka::BaseWorker.base_worker)
         matcher.scope.const_set(matcher.name, klass)
       end
 
       private
-
-      # @return [Class] descendant of Karafka::BaseWorker from which all other workers
-      #   should inherit
-      # @raise [Karafka::Errors::BaseWorkerDescentantMissing] raised when Karafka cannot detect
-      #   direct Karafka::BaseWorker descendant from which it could build workers
-      def base
-        Karafka::BaseWorker.subclasses.first || raise(Errors::BaseWorkerDescentantMissing)
-      end
 
       # @return [Karafka::Helpers::ClassMatcher] matcher instance for matching between consumer
       #   and appropriate worker

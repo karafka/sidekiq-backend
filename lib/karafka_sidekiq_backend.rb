@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-# @note Active Support is already included since Karafka is using it directly so no need
-#   to require it again in the gemspec, etc
 %w[
-  active_support/core_ext/class/subclasses
   karafka
   sidekiq
 ].each(&method(:require))
