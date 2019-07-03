@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Karafka::Routing::Builder do
-  subject(:builder) { described_class.instance }
+  subject(:builder) { described_class.new }
 
   ATTRIBUTES = %i[
     consumer
@@ -20,7 +20,7 @@ RSpec.describe Karafka::Routing::Builder do
       let(:topic1) { builder.first.topics.first }
       let(:topic2) { builder.last.topics.first }
       let(:consumer_group1) do
-        described_class.instance.draw do
+        builder.draw do
           topic :topic_name1 do
             # Here we should have instance doubles, etc but it takes
             # shitload of time to setup to pass to instance evaluation from instance variables,
@@ -36,7 +36,7 @@ RSpec.describe Karafka::Routing::Builder do
         end
       end
       let(:consumer_group2) do
-        described_class.instance.draw do
+        builder.draw do
           topic :topic_name2 do
             consumer Class.new(Karafka::BaseConsumer)
             backend :inline
@@ -72,7 +72,7 @@ RSpec.describe Karafka::Routing::Builder do
       let(:topic1) { builder.first.topics.first }
       let(:topic2) { builder.last.topics.first }
       let(:consumer_group1) do
-        described_class.instance.draw do
+        builder.draw do
           consumer_group :group_name1 do
             seed_brokers %w[kafka://localhost:9091]
 
@@ -89,7 +89,7 @@ RSpec.describe Karafka::Routing::Builder do
         end
       end
       let(:consumer_group2) do
-        described_class.instance.draw do
+        builder.draw do
           consumer_group :group_name2 do
             seed_brokers %w[kafka://localhost:9092]
 
@@ -123,7 +123,7 @@ RSpec.describe Karafka::Routing::Builder do
       let(:topic2) { builder.first.topics.last }
 
       before do
-        described_class.instance.draw do
+        builder.draw do
           consumer_group :group_name1 do
             seed_brokers %w[kafka://localhost:9091]
 
@@ -158,7 +158,7 @@ RSpec.describe Karafka::Routing::Builder do
 
     context 'when it is an invalid route' do
       let(:invalid_route) do
-        described_class.instance.draw do
+        builder.draw do
           consumer_group '$%^&*(' do
             topic :topic_name1 do
               backend :inline
