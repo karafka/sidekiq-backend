@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/karafka/karafka
-  revision: 642726e83f93ce04af361b979ac2093476f07b29
+  revision: 87d913d135f83a6ef83cad503b57e202dfb4b4f4
   specs:
     karafka (1.3.0)
       dry-configurable (~> 0.8)
@@ -91,7 +91,7 @@ GEM
       dry-equalizer (~> 0.2, >= 0.2.2)
       dry-inflector (~> 0.1, >= 0.1.2)
       dry-logic (~> 1.0, >= 1.0.2)
-    dry-validation (1.2.0)
+    dry-validation (1.2.1)
       concurrent-ruby (~> 1.0)
       dry-container (~> 0.7, >= 0.7.1)
       dry-core (~> 0.4)
@@ -125,7 +125,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
-    ruby-kafka (0.7.8)
+    ruby-kafka (0.7.9)
       digest-crc
     sidekiq (5.2.7)
       connection_pool (~> 2.2, >= 2.2.2)
