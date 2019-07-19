@@ -5,6 +5,22 @@ module Karafka
   class BaseWorker
     include Sidekiq::Worker
 
+    class << self
+      # Returns the base worker class for application.
+      #
+      # @return [Class] first worker that inherited from Karafka::BaseWorker. Karafka
+      #   assimes that it is the base worker for an application.
+      # @raise [Karafka::Errors::BaseWorkerDescentantMissing] raised when application
+      #   base worker was not defined.
+      def base_worker
+        @base_worker || raise(Errors::BaseWorkerDescentantMissing)
+      end
+
+      def inherited(subclass)
+        @base_worker ||= subclass
+      end
+    end
+
     # Executes the logic that lies in #perform Karafka consumer method
     # @param topic_id [String] Unique topic id that we will use to find a proper topic
     # @param params_batch [Array<Hash>] Array with messages batch

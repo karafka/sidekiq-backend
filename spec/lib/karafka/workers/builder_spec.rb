@@ -16,13 +16,15 @@ RSpec.describe Karafka::Workers::Builder do
   end
 
   describe '#build' do
-    let(:base) { Karafka::BaseWorker }
+    subject { builder.build }
+    let(:base_worker) { Class.new(Karafka::BaseWorker) }
 
     before do
-      allow(Karafka::BaseWorker)
-        .to receive(:subclasses)
-        .and_return([base])
+      Karafka::BaseWorker.instance_variable_set(:@base_worker, nil)
+      base_worker
     end
+    after { Karafka::BaseWorker.instance_variable_set(:@base_worker, nil) }
+
 
     context 'when the worker class already exists' do
       before { worker_class }
@@ -40,7 +42,7 @@ RSpec.describe Karafka::Workers::Builder do
           end
         end
 
-        it { expect(builder.build).to eq worker_class }
+        it { is_expected.to eq worker_class }
       end
 
       context 'when it is in a module/class' do
@@ -60,14 +62,14 @@ RSpec.describe Karafka::Workers::Builder do
           end
         end
 
-        it { expect(builder.build).to eq worker_class }
+        it { is_expected.to eq worker_class }
       end
 
       context 'when it is anonymous' do
         let(:consumer_class) { Class.new }
         let(:worker_class) { nil }
 
-        it { expect(builder.build).to be < Karafka::BaseWorker }
+        it { is_expected.to be < base_worker }
       end
     end
 
@@ -79,11 +81,13 @@ RSpec.describe Karafka::Workers::Builder do
           end
         end
 
+        after { Object.__send__(:remove_const, :SuperSadWorker) }
+
         it 'expect to build it' do
-          expect(builder.build.to_s).to eq 'SuperSadWorker'
+          expect(subject.to_s).to eq 'SuperSadWorker'
         end
 
-        it { expect(builder.build).to be < Karafka::BaseWorker }
+        it { is_expected.to be < base_worker }
       end
 
       context 'when it is in a module/class' do
@@ -95,35 +99,13 @@ RSpec.describe Karafka::Workers::Builder do
           end
         end
 
+        after { TestModule.__send__(:remove_const, :SuperSad2Worker) }
+
         it 'expect to build it' do
-          expect(builder.build.to_s).to eq 'TestModule::SuperSad2Worker'
+          expect(subject.to_s).to eq 'TestModule::SuperSad2Worker'
         end
 
-        it { expect(builder.build).to be < Karafka::BaseWorker }
-      end
-    end
-  end
-
-  describe '#base' do
-    before do
-    end
-
-    context 'when there is a direct descendant of Karafka::BaseWorker' do
-      let(:descendant) { double }
-
-      it 'expect to use it' do
-        expect(Karafka::BaseWorker).to receive(:subclasses).and_return([descendant])
-        expect(builder.send(:base)).to eq descendant
-      end
-    end
-
-    context 'when there is no direct descendant of Karafka::BaseWorker' do
-      let(:descendant) { nil }
-      let(:error) { Karafka::Errors::BaseWorkerDescentantMissing }
-
-      it 'expect to fail' do
-        expect(Karafka::BaseWorker).to receive(:subclasses).and_return([descendant])
-        expect { builder.send(:base) }.to raise_error(error)
+        it { is_expected.to be < base_worker }
       end
     end
   end
