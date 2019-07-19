@@ -16,6 +16,8 @@ module Karafka
         @inherited || raise(Errors::BaseWorkerDescentantMissing)
       end
 
+      # @param subclass [Class] subclass of the worker
+      # @return [Class] subclass of the worker that was selected
       def inherited(subclass)
         @inherited ||= subclass
       end
