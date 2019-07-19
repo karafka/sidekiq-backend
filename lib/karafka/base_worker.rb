@@ -9,15 +9,15 @@ module Karafka
       # Returns the base worker class for application.
       #
       # @return [Class] first worker that inherited from Karafka::BaseWorker. Karafka
-      #   assimes that it is the base worker for an application.
+      #   assumes that it is the base worker for an application.
       # @raise [Karafka::Errors::BaseWorkerDescentantMissing] raised when application
       #   base worker was not defined.
       def base_worker
-        @base_worker || raise(Errors::BaseWorkerDescentantMissing)
+        @inherited || raise(Errors::BaseWorkerDescentantMissing)
       end
 
       def inherited(subclass)
-        @base_worker ||= subclass
+        @inherited ||= subclass
       end
     end
 

@@ -16,15 +16,16 @@ RSpec.describe Karafka::Workers::Builder do
   end
 
   describe '#build' do
-    subject { builder.build }
+    subject(:build) { builder.build }
+
     let(:base_worker) { Class.new(Karafka::BaseWorker) }
 
     before do
-      Karafka::BaseWorker.instance_variable_set(:@base_worker, nil)
+      Karafka::BaseWorker.instance_variable_set(:@inherited, nil)
       base_worker
     end
-    after { Karafka::BaseWorker.instance_variable_set(:@base_worker, nil) }
 
+    after { Karafka::BaseWorker.instance_variable_set(:@inherited, nil) }
 
     context 'when the worker class already exists' do
       before { worker_class }
@@ -84,7 +85,7 @@ RSpec.describe Karafka::Workers::Builder do
         after { Object.__send__(:remove_const, :SuperSadWorker) }
 
         it 'expect to build it' do
-          expect(subject.to_s).to eq 'SuperSadWorker'
+          expect(build.to_s).to eq 'SuperSadWorker'
         end
 
         it { is_expected.to be < base_worker }
@@ -102,7 +103,7 @@ RSpec.describe Karafka::Workers::Builder do
         after { TestModule.__send__(:remove_const, :SuperSad2Worker) }
 
         it 'expect to build it' do
-          expect(subject.to_s).to eq 'TestModule::SuperSad2Worker'
+          expect(build.to_s).to eq 'TestModule::SuperSad2Worker'
         end
 
         it { is_expected.to be < base_worker }
