@@ -37,6 +37,10 @@ module Karafka
 
     private
 
+    # @see `#perform` for exact params descriptions
+    # @param topic_id [String]
+    # @param params_batch [Array<Hash>]
+    # @param metadata [Hash, nil]
     # @return [Karafka::Consumer] descendant of Karafka::BaseConsumer that matches the topic
     #   with params_batch assigned already (consumer is ready to use)
     def consumer(topic_id, params_batch, metadata)

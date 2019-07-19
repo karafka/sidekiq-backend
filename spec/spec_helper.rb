@@ -6,7 +6,6 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 %w[
   simplecov
-  timecop
 ].each do |lib|
   require lib
 end
@@ -37,8 +36,6 @@ end
 
 # jruby counts coverage a bit differently, so we ignore that
 SimpleCov.minimum_coverage jruby? ? 95 : 100
-
-Timecop.safe_mode = true
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
