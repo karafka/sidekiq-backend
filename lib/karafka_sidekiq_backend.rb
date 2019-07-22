@@ -13,7 +13,6 @@ Zeitwerk::Loader
   .tap { |loader| loader.ignore("#{__dir__}/karafka-sidekiq-backend.rb") }
   .tap(&:setup)
   .tap(&:eager_load)
-  .tap { |loader| loader.preload('lib/') }
 
 Karafka::Params::Builders::Params.extend(Karafka::Extensions::ParamsBuilder)
 Karafka::Params::Builders::ParamsBatch.extend(Karafka::Extensions::ParamsBatchBuilder)
