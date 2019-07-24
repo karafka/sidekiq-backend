@@ -3,7 +3,7 @@
 RSpec.describe Karafka::Extensions::StdoutListener do
   subject(:listener) { Karafka::Instrumentation::StdoutListener.new }
 
-  let(:event) { Dry::Events::Event.new(rand, payload) }
+  let(:event) { Dry::Events::Event.new(rand.to_s, payload) }
   let(:time) { rand }
   let(:topic) { instance_double(Karafka::Routing::Topic, name: topic_name) }
   let(:topic_name) { rand.to_s }
