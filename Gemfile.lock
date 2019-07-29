@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/karafka/karafka
-  revision: e7204ea38b28bcaa97c31fd1f7e2be2bd5b2874b
+  revision: 1b808635f53f5818ab5240c322159af463bbfc6b
   specs:
     karafka (1.3.0)
       dry-configurable (~> 0.8)
