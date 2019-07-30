@@ -31,37 +31,15 @@ RSpec.describe Karafka::Workers::Builder do
       before { worker_class }
 
       context 'when it is on a root level' do
-        let(:consumer_class) do
-          class SuperConsumer
-            self
-          end
-        end
-
-        let(:worker_class) do
-          class SuperWorker
-            self
-          end
-        end
+        let(:consumer_class) { stub_const 'SuperConsumer', Class.new }
+        let(:worker_class) { stub_const 'SuperWorker', Class.new }
 
         it { is_expected.to eq worker_class }
       end
 
       context 'when it is in a module/class' do
-        let(:consumer_class) do
-          module TestModule
-            class SuperConsumer
-              self
-            end
-          end
-        end
-
-        let(:worker_class) do
-          module TestModule
-            class SuperWorker
-              self
-            end
-          end
-        end
+        let(:consumer_class) { stub_const 'TestModule::SuperConsumer', Class.new }
+        let(:worker_class) { stub_const 'TestModule::SuperWorker', Class.new }
 
         it { is_expected.to eq worker_class }
       end
@@ -76,11 +54,7 @@ RSpec.describe Karafka::Workers::Builder do
 
     context 'when a given worker class does not exist' do
       context 'when it is on a root level' do
-        let(:consumer_class) do
-          class SuperSadConsumer
-            self
-          end
-        end
+        let(:consumer_class) { stub_const 'SuperSadConsumer', Class.new }
 
         after { Object.__send__(:remove_const, :SuperSadWorker) }
 
@@ -92,13 +66,7 @@ RSpec.describe Karafka::Workers::Builder do
       end
 
       context 'when it is in a module/class' do
-        let(:consumer_class) do
-          module TestModule
-            class SuperSad2Consumer
-              self
-            end
-          end
-        end
+        let(:consumer_class) { stub_const 'TestModule::SuperSad2Consumer', Class.new }
 
         after { TestModule.__send__(:remove_const, :SuperSad2Worker) }
 

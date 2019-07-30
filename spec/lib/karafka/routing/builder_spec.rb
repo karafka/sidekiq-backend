@@ -3,14 +3,6 @@
 RSpec.describe Karafka::Routing::Builder do
   subject(:builder) { described_class.new }
 
-  ATTRIBUTES = %i[
-    consumer
-    worker
-    deserializer
-    interchanger
-    responder
-  ].freeze
-
   before { builder.clear }
 
   after { builder.clear }
