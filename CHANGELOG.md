@@ -1,14 +1,12 @@
 # Karafka Sidekiq Backend
 
-## 1.3.0
+## 1.3.0.rc1 (2019-07-31)
 - Ruby 2.6.3 support
 - Drop Ruby 2.3 support
 - Sync with Karafka: metadata support
 - Sync with Karafka #463 (Split parsers into serializers / deserializers)
 - #26 - Make listeners as instances
 - Zeitwerk integration
-
-## master
 - drop jruby support
 
 ## 1.2.0
