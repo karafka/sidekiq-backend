@@ -1,5 +1,8 @@
 # Karafka Sidekiq Backend
 
+## Unreleased
+- Drop Ruby 2.4 support
+
 ## 1.3.0.rc1 (2019-07-31)
 - Ruby 2.6.3 support
 - Drop Ruby 2.3 support
