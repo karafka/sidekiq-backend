@@ -64,7 +64,7 @@ GEM
       dry-schema (~> 1.0, >= 1.3.1)
     envlogic (1.1.0)
       dry-inflector (~> 0.1)
-    irb (1.1.0)
+    irb (1.2.0)
       reline (>= 0.0.1)
     json (2.2.0)
     karafka (1.3.1)
