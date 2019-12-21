@@ -103,7 +103,7 @@ GEM
     rspec-support (3.9.0)
     ruby-kafka (0.7.10)
       digest-crc
-    sidekiq (6.0.3)
+    sidekiq (6.0.4)
       connection_pool (>= 2.2.2)
       rack (>= 2.0.0)
       rack-protection (>= 2.0.0)
