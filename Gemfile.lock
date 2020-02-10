@@ -82,7 +82,7 @@ GEM
       zeitwerk (~> 2.1)
     king_konf (0.3.7)
     multi_json (1.14.1)
-    rack (2.1.2)
+    rack (2.2.1)
     rack-protection (2.0.8.1)
       rack
     rake (13.0.1)
