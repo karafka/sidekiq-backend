@@ -45,6 +45,7 @@ or on a per topic level:
 App.routes.draw do
   consumer_group :videos_consumer do
     topic :binary_video_details do
+      backend :sidekiq
       consumer Videos::DetailsConsumer
       worker Workers::DetailsWorker
       interchanger Interchangers::MyCustomInterchanger
