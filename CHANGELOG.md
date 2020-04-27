@@ -1,6 +1,6 @@
 # Karafka Sidekiq Backend
 
-## Unreleased (master)
+## 1.3.1 (2020-04-27)
 - Ruby 2.6.5 support
 - Ruby 2.7.1 support
 - Change license to LGPL-3.0
