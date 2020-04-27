@@ -2,6 +2,8 @@
 
 ## Unreleased (master)
 - Ruby 2.6.5 support
+- Ruby 2.7.1 support
+- Change license to LGPL-3.0
 
 ## 1.3.0 (2019-09-09)
 - Drop Ruby 2.4 support

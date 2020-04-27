@@ -1,32 +1,27 @@
 # frozen_string_literal: true
 
 ENV['KARAFKA_ENV'] = 'test'
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
-%w[
-  simplecov
-].each do |lib|
-  require lib
+coverage = !ENV.key?('GITHUB_WORKFLOW')
+coverage = true if ENV['GITHUB_COVERAGE'] == 'true'
+
+if coverage
+  require 'simplecov'
+
+  # Don't include unnecessary stuff into rcov
+  SimpleCov.start do
+    add_filter '/spec/'
+    add_filter '/vendor/'
+    add_filter '/gems/'
+    add_filter '/.bundle/'
+    add_filter '/doc/'
+    add_filter '/config/'
+
+    merge_timeout 600
+    minimum_coverage 100
+    enable_coverage :branch
+  end
 end
-
-# @return [Boolean] true if we run against jruby
-def jruby?
-  (ENV['RUBY_VERSION'] || RUBY_ENGINE).include?('jruby')
-end
-
-# Don't include unnecessary stuff into rcov
-SimpleCov.start do
-  add_filter '/vendor/'
-  add_filter '/gems/'
-  add_filter '/.bundle/'
-  add_filter '/doc/'
-  add_filter '/spec/'
-  merge_timeout 600
-end
-
-# jruby counts coverage a bit differently, so we ignore that
-SimpleCov.minimum_coverage jruby? ? 95 : 100
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"]
   .sort
