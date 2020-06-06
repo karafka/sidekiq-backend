@@ -9,7 +9,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     concurrent-ruby (1.1.6)
-    connection_pool (2.2.2)
+    connection_pool (2.2.3)
     delivery_boy (1.0.1)
       king_konf (~> 0.3)
       ruby-kafka (~> 1.0)
