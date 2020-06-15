@@ -87,7 +87,7 @@ GEM
     rack-protection (2.0.8.1)
       rack
     rake (13.0.1)
-    redis (4.1.4)
+    redis (4.2.1)
     reline (0.1.4)
       io-console (~> 0.5)
     rspec (3.9.0)
@@ -103,7 +103,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.3)
-    ruby-kafka (1.0.0)
+    ruby-kafka (1.1.0)
       digest-crc
     sidekiq (6.0.7)
       connection_pool (>= 2.2.2)
