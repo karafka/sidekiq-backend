@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version     = Karafka::Backends::Sidekiq::VERSION
   spec.platform    = Gem::Platform::RUBY
   spec.authors     = ['Maciej Mensfeld']
-  spec.email       = %w[maciej@coditsu.io]
+  spec.email       = %w[maciej@mensfeld.pl]
   spec.homepage    = 'https://github.com/karafka/karafka-sidekiq-backend'
   spec.summary     = 'Karafka Sidekiq backend for background messages processing'
   spec.description = 'Karafka Sidekiq backend for background messages processing'
