@@ -102,7 +102,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.3)
-    ruby-kafka (1.1.0)
+    ruby-kafka (1.2.0)
       digest-crc
     sidekiq (6.1.1)
       connection_pool (>= 2.2.2)
