@@ -1,5 +1,8 @@
 # Karafka Sidekiq Backend
 
+## 1.4.0.rc1 (unreleased)
+- Update to match Karafka 1.4.0 params and batch metadata setup
+
 ## 1.3.1 (2020-04-27)
 - Ruby 2.6.5 support
 - Ruby 2.7.1 support
