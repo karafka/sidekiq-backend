@@ -80,7 +80,7 @@ RSpec.describe Karafka::BaseWorker do
     end
 
     context 'when batch_fetching is on' do
-      let(:batch_metadata) { { rand => rand } }
+      let(:batch_metadata) { { 'batch_size' => rand(100) } }
       let(:initialized_consumer) do
         base_worker.send(:consumer, topic_id, params_batch, batch_metadata)
       end

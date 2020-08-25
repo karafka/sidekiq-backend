@@ -13,7 +13,11 @@ module Karafka
         # so it gets reconstructed from the topic
         Karafka::Params::BatchMetadata
           .new(
-            **hash.merge('deserializer' => topic.deserializer)
+            **(
+              hash
+              .merge('deserializer' => topic.deserializer)
+              .transform_keys(&:to_sym)
+            )
           )
       end
     end

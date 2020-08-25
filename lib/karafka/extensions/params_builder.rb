@@ -10,7 +10,12 @@ module Karafka
       # @return [Karafka::Params::Params] built params
       def from_hash(hash, topic)
         metadata = Karafka::Params::Metadata.new(
-          **hash.fetch('metadata').merge('deserializer' => topic.deserializer)
+          **(
+            hash
+            .fetch('metadata')
+            .merge('deserializer' => topic.deserializer)
+            .transform_keys(&:to_sym)
+          )
         ).freeze
 
         Karafka::Params::Params
