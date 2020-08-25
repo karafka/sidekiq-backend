@@ -11,10 +11,14 @@ module Karafka
   # This interchanger uses default Sidekiq options to exchange data
   class Interchanger
     # @param params_batch [Karafka::Params::ParamsBatch] Karafka params batch object
-    # @return [Array<Karafka::Params::Params>] Array with hash/hashwithindiff values that will
-    #   be serialized using Sidekiq serialization engine
+    # @return [Array<Hash>] Array with hash built out of params data
     def encode(params_batch)
-      params_batch.to_a
+      params_batch.map do |param|
+        {
+          raw_payload: param.raw_payload,
+          metadata: param.metadata.to_h
+        }
+      end
     end
 
     # @param params_batch [Array<Hash>] Sidekiq params that are now an array

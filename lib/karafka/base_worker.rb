@@ -54,7 +54,7 @@ module Karafka
       )
 
       if topic.batch_fetching
-        consumer.metadata = Params::Builders::Metadata.from_hash(
+        consumer.batch_metadata = Params::Builders::BatchMetadata.from_hash(
           metadata,
           topic
         )

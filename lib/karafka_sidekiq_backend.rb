@@ -16,7 +16,7 @@ Zeitwerk::Loader
 
 Karafka::Params::Builders::Params.extend(Karafka::Extensions::ParamsBuilder)
 Karafka::Params::Builders::ParamsBatch.extend(Karafka::Extensions::ParamsBatchBuilder)
-Karafka::Params::Builders::Metadata.extend(Karafka::Extensions::MetadataBuilder)
+Karafka::Params::Builders::BatchMetadata.extend(Karafka::Extensions::BatchMetadataBuilder)
 Karafka::Routing::Topic.include(Karafka::Extensions::SidekiqTopicAttributes)
 Karafka::AttributesMap.prepend(Karafka::Extensions::SidekiqAttributesMap)
 Karafka::Instrumentation::StdoutListener.include(Karafka::Extensions::StdoutListener)

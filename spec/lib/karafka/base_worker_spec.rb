@@ -74,14 +74,16 @@ RSpec.describe Karafka::BaseWorker do
         expect(initialized_consumer).to eq consumer_instance
       end
 
-      it 'expect not to restore metadata' do
-        expect(initialized_consumer).not_to respond_to(:metadata)
+      it 'expect not to restore batch metadata' do
+        expect(initialized_consumer).not_to respond_to(:batch_metadata)
       end
     end
 
     context 'when batch_fetching is on' do
-      let(:initialized_consumer) { base_worker.send(:consumer, topic_id, params_batch, metadata) }
-      let(:metadata) { { rand => rand } }
+      let(:batch_metadata) { { rand => rand } }
+      let(:initialized_consumer) do
+        base_worker.send(:consumer, topic_id, params_batch, batch_metadata)
+      end
       let(:topic) do
         instance_double(
           Karafka::Routing::Topic,
@@ -110,7 +112,7 @@ RSpec.describe Karafka::BaseWorker do
         expect(initialized_consumer).to eq consumer_instance
       end
 
-      it { expect(initialized_consumer.metadata).to be_a(Karafka::Params::Metadata) }
+      it { expect(initialized_consumer.batch_metadata).to be_a(Karafka::Params::BatchMetadata) }
     end
   end
 end
