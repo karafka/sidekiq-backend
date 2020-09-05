@@ -5,34 +5,30 @@ RSpec.describe Karafka::Interchanger do
 
   let(:array_params_batch) do
     [
-      {
-        'value' => 1,
-        'deserializer' => 'Class',
-        'receive_time' => 1,
-        'a' => 1
-      }
+      Karafka::Params::Params.new(
+        1,
+        Karafka::Params::Metadata.new(deserializer: 'Class')
+      )
     ]
   end
   let(:params_batch) do
-    instance_double(
-      Karafka::Params::ParamsBatch,
-      to_a: array_params_batch
-    )
+    Karafka::Params::ParamsBatch.new(array_params_batch)
   end
 
-  describe 'encode and decode chain' do
-    it 'expects to be able to encode and decode and remain structure' do
-      encoded = interchanger.encode(params_batch)
-      decoded = interchanger.decode(encoded)
-      expect(decoded).to eq array_params_batch
-    end
+  describe '#encode' do
+    subject(:encoded) { described_class.new.encode(params_batch) }
+
+    it { expect(encoded).to be_a(Array) }
+    it { expect(encoded[0]).to be_a(Hash) }
+    it { expect(encoded[0][:raw_payload]).to eq(array_params_batch.first.raw_payload) }
+    it { expect(encoded[0][:metadata]).to eq(array_params_batch.first.metadata.to_h) }
   end
 
-  describe 'json serialized later params batch' do
-    it 'expects to be able to encode and decode and remain structure' do
-      encoded = interchanger.encode(params_batch).to_json
-      decoded = interchanger.decode(JSON.parse(encoded))
-      expect(decoded[0].to_a - array_params_batch[0].to_a).to be_empty
-    end
+  describe '#decode' do
+    subject(:decoded) { described_class.new.decode(encoded) }
+
+    let(:encoded) { described_class.new.encode(params_batch) }
+
+    it { expect(decoded).to eq(encoded) }
   end
 end

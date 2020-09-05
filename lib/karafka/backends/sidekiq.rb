@@ -6,7 +6,7 @@ module Karafka
     # Sidekiq backend that schedules stuff to Sidekiq worker for delayed execution
     module Sidekiq
       # Karafka Sidekiq backend version
-      VERSION = '1.3.1'
+      VERSION = '1.4.0'
 
       # Enqueues the execution of perform method into a worker.
       # @note Each worker needs to have a class #perform_async method that will allow us to pass
@@ -18,7 +18,7 @@ module Karafka
           topic.worker.perform_async(
             topic.id,
             topic.interchanger.encode(params_batch),
-            respond_to?(:metadata) ? metadata : nil
+            respond_to?(:batch_metadata) ? batch_metadata.to_h : nil
           )
         end
       end

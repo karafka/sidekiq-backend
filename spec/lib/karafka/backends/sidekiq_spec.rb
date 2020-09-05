@@ -31,11 +31,11 @@ RSpec.describe Karafka::Backends::Sidekiq do
       .and_return(interchanged_data)
   end
 
-  context 'when metadata is available for the consumer instance' do
+  context 'when batch_metadata is available for the consumer instance' do
     pending
   end
 
-  context 'when metadata is not available for the consumer instance' do
+  context 'when batch_metadata is not available for the consumer instance' do
     it 'expect to schedule with sidekiq using interchanged data' do
       expect(topic.worker).to receive(:perform_async)
         .with(topic.id, interchanged_data, nil)

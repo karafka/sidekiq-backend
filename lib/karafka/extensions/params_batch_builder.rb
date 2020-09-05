@@ -10,11 +10,11 @@ module Karafka
       # @return [Karafka::Params::ParamsBatch] built batch
       # @note We rebuild the params batch from array after the serialization
       def from_array(array, topic)
-        params_array = array.map! do |hash|
+        params_array = array.map do |hash|
           Karafka::Params::Builders::Params.from_hash(hash, topic)
         end
 
-        Karafka::Params::ParamsBatch.new(params_array)
+        Karafka::Params::ParamsBatch.new(params_array).freeze
       end
     end
   end

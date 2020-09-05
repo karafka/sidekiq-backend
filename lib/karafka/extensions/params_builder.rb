@@ -9,10 +9,15 @@ module Karafka
       # @param topic [Karafka::Routing::Topic] topic for which we build the params
       # @return [Karafka::Params::Params] built params
       def from_hash(hash, topic)
+        metadata = Karafka::Params::Metadata.new(
+          **hash
+            .fetch('metadata')
+            .merge('deserializer' => topic.deserializer)
+            .transform_keys(&:to_sym)
+        ).freeze
+
         Karafka::Params::Params
-          .new
-          .merge!(hash)
-          .merge!('deserializer' => topic.deserializer)
+          .new(hash.fetch('raw_payload'), metadata)
       end
     end
   end
