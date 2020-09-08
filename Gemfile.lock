@@ -84,7 +84,7 @@ GEM
     king_konf (0.3.7)
     rack (2.2.3)
     rake (13.0.1)
-    redis (4.2.1)
+    redis (4.2.2)
     reline (0.1.4)
       io-console (~> 0.5)
     rspec (3.9.0)
@@ -102,7 +102,7 @@ GEM
     rspec-support (3.9.3)
     ruby-kafka (1.2.0)
       digest-crc
-    sidekiq (6.1.1)
+    sidekiq (6.1.2)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
