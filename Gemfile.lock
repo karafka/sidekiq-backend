@@ -67,7 +67,7 @@ GEM
     envlogic (1.1.2)
       dry-inflector (~> 0.1)
     io-console (0.5.6)
-    irb (1.2.6)
+    irb (1.2.7)
       reline (>= 0.1.5)
     karafka (1.4.0)
       dry-configurable (~> 0.8)
