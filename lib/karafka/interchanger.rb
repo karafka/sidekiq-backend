@@ -15,8 +15,8 @@ module Karafka
     def encode(params_batch)
       params_batch.map do |param|
         {
-          raw_payload: param.raw_payload,
-          metadata: param.metadata.to_h
+          'raw_payload' => param.raw_payload,
+          'metadata' => param.metadata.to_h
         }
       end
     end
