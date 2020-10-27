@@ -109,17 +109,13 @@ end
 Each custom interchanger should define `encode` to encode params before they get stored in Redis, and `decode` to convert the params to hash format, as shown below:
 
 ```ruby
-class Base64Interchanger
-  class << self
-    def encode(params_batch)
-      # Note, that you need to cast the params_batch to an array in order to get it work
-      # in sidekiq later
-      Base64.encode64(Marshal.dump(params_batch.to_a))
-    end
+class Base64Interchanger < ::Karafka::Interchanger
+  def encode(params_batch)
+    Base64.encode64(Marshal.dump(super))
+  end
 
-    def decode(params_string)
-      Marshal.load(Base64.decode64(params_string))
-    end
+  def decode(params_string)
+    Marshal.load(Base64.decode64(super))
   end
 end
 

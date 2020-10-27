@@ -20,8 +20,8 @@ RSpec.describe Karafka::Interchanger do
 
     it { expect(encoded).to be_a(Array) }
     it { expect(encoded[0]).to be_a(Hash) }
-    it { expect(encoded[0][:raw_payload]).to eq(array_params_batch.first.raw_payload) }
-    it { expect(encoded[0][:metadata]).to eq(array_params_batch.first.metadata.to_h) }
+    it { expect(encoded[0]['raw_payload']).to eq(array_params_batch.first.raw_payload) }
+    it { expect(encoded[0]['metadata']).to eq(array_params_batch.first.metadata.to_h) }
   end
 
   describe '#decode' do
