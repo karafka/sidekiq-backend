@@ -1,5 +1,9 @@
 # Karafka Sidekiq Backend
 
+## 1.4.1 (2020-27-10)
+- Corrected interchanger documentation (Jack12816)
+- Corrected the interchanger key reference (Jack12816)
+
 ## 1.4.0 (2020-09-05)
 - Update to match Karafka 1.4.0 params and batch metadata setup
 

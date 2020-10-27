@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    karafka-sidekiq-backend (1.4.0)
+    karafka-sidekiq-backend (1.4.1)
       karafka (~> 1.4.0)
       sidekiq (>= 4.2)
 
