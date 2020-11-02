@@ -85,7 +85,7 @@ GEM
     rack (2.2.3)
     rake (13.0.1)
     redis (4.2.2)
-    reline (0.1.6)
+    reline (0.1.7)
       io-console (~> 0.5)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
