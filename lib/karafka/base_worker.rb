@@ -19,6 +19,7 @@ module Karafka
       # @param subclass [Class] subclass of the worker
       # @return [Class] subclass of the worker that was selected
       def inherited(subclass)
+        super
         @inherited ||= subclass
       end
     end
