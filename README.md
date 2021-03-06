@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/karafka/sidekiq-backend/workflows/ci/badge.svg)](https://github.com/karafka/sidekiq-backend/actions?query=workflow%3Aci)
 [![Gem Version](https://badge.fury.io/rb/karafka-sidekiq-backend.svg)](http://badge.fury.io/rb/karafka-sidekiq-backend)
-[![Join the chat at https://gitter.im/karafka/karafka](https://badges.gitter.im/karafka/karafka.svg)](https://gitter.im/karafka/karafka?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/karafka/karafka](https://badges.gitter.im/karafka/karafka.svg)](https://gitter.im/karafka/karafka)
 
 [Karafka Sidekiq Backend](https://github.com/karafka/sidekiq-backend) provides support for consuming (processing) received Kafka messages inside of Sidekiq workers.
 
