@@ -1,5 +1,8 @@
 # Karafka Sidekiq Backend
 
+## Unreleased
+- Remove Ruby 2.5 support and update minimum Ruby requirement to 2.6
+
 ## 1.4.1 (2020-27-10)
 - Corrected interchanger documentation (Jack12816)
 - Corrected the interchanger key reference (Jack12816)

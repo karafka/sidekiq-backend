@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'karafka', '~> 1.4.0'
   spec.add_dependency 'sidekiq', '>= 4.2'
-  spec.required_ruby_version = '>= 2.5.0'
+  spec.required_ruby_version = '>= 2.6.0'
 
   if $PROGRAM_NAME.end_with?('gem')
     spec.signing_key = File.expand_path('~/.ssh/gem-private_key.pem')
