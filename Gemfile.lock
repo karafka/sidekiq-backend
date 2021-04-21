@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    karafka-sidekiq-backend (1.4.1)
+    karafka-sidekiq-backend (1.4.2)
       karafka (~> 1.4.0)
       sidekiq (>= 4.2)
 
@@ -58,7 +58,7 @@ GEM
       dry-equalizer (~> 0.2)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.5, >= 1.5.2)
-    envlogic (1.1.2)
+    envlogic (1.1.3)
       dry-inflector (~> 0.1)
     io-console (0.5.9)
     irb (1.3.5)

@@ -1,6 +1,6 @@
 # Karafka Sidekiq Backend
 
-## Unreleased
+## 1.4.2 (2021-04-21)
 - Remove Ruby 2.5 support and update minimum Ruby requirement to 2.6
 
 ## 1.4.1 (2020-27-10)
