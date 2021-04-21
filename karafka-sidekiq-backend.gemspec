@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage    = 'https://github.com/karafka/karafka-sidekiq-backend'
   spec.summary     = 'Karafka Sidekiq backend for background messages processing'
   spec.description = 'Karafka Sidekiq backend for background messages processing'
-  spec.license     = 'LGPL-3.0'
+  spec.license     = 'MIT'
 
   spec.add_dependency 'karafka', '~> 1.4.0'
   spec.add_dependency 'sidekiq', '>= 4.2'
