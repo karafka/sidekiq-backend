@@ -49,7 +49,7 @@ App.routes.draw do
       backend :sidekiq
       consumer Videos::DetailsConsumer
       worker Workers::DetailsWorker
-      interchanger Interchangers::MyCustomInterchanger
+      interchanger Interchangers::MyCustomInterchanger.new
     end
   end
 end
@@ -64,7 +64,7 @@ There are two options you can set inside of the ```topic``` block:
 | Option       | Value type | Description                                                                                                       |
 |--------------|------------|-------------------------------------------------------------------------------------------------------------------|
 | worker       | Class      | Name of a worker class that we want to use to schedule perform code                                               |
-| interchanger | Class      | Name of an interchanger class that we want to use to pass the incoming data to Sidekiq                            |
+| interchanger | Instance   | Instance of an interchanger class that we want to use to pass the incoming data to Sidekiq                        |
 
 
 ### Workers
@@ -102,7 +102,7 @@ App.routes.draw do
   consumer_group :videos_consumer do
     topic :binary_video_details do
       consumer Videos::DetailsConsumer
-      interchanger Interchangers::MyCustomInterchanger
+      interchanger Interchangers::MyCustomInterchanger.new
     end
   end
 end

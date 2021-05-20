@@ -11,8 +11,8 @@ module Karafka
         @worker ||= backend == :sidekiq ? Karafka::Workers::Builder.new(consumer).build : nil
       end
 
-      # @return [Class] Interchanger class (not an instance) that we want to use to interchange
-      #   params between Karafka server and Karafka background job
+      # @return [#encode, #decode] Interchanger instance (not a class) that we want to use to
+      #   interchange params between Karafka server and Karafka background job
       def interchanger
         @interchanger ||= Karafka::Interchanger.new
       end
