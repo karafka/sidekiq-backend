@@ -8,7 +8,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     delivery_boy (1.1.0)
       king_konf (~> 1.0)
@@ -116,6 +116,8 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  x86_64-darwin
+  x86_64-darwin-19
   x86_64-linux
 
 DEPENDENCIES
