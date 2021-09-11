@@ -1,5 +1,13 @@
 # Karafka Sidekiq Backend
 
+## Deprecation notice
+
+This backend was designed to compensate for lack of multi-threading in Karafka. After Karafka `2.0` release, this backend development won't be continued.
+
+We will **still** support it for Karafka `1.4` but it won't work with Karafka `2.0`. We will however provide an extensive guide on how you can achieve similar functionality with Sidekiq yourself.
+
+## About
+
 [![Build Status](https://github.com/karafka/sidekiq-backend/workflows/ci/badge.svg)](https://github.com/karafka/sidekiq-backend/actions?query=workflow%3Aci)
 [![Gem Version](https://badge.fury.io/rb/karafka-sidekiq-backend.svg)](http://badge.fury.io/rb/karafka-sidekiq-backend)
 [![Join the chat at https://gitter.im/karafka/karafka](https://badges.gitter.im/karafka/karafka.svg)](https://gitter.im/karafka/karafka)
