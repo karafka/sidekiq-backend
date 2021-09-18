@@ -10,7 +10,7 @@ We will **still** support it for Karafka `1.4` but it won't work with Karafka `2
 
 [![Build Status](https://github.com/karafka/sidekiq-backend/workflows/ci/badge.svg)](https://github.com/karafka/sidekiq-backend/actions?query=workflow%3Aci)
 [![Gem Version](https://badge.fury.io/rb/karafka-sidekiq-backend.svg)](http://badge.fury.io/rb/karafka-sidekiq-backend)
-[![Join the chat at https://gitter.im/karafka/karafka](https://badges.gitter.im/karafka/karafka.svg)](https://gitter.im/karafka/karafka)
+[![Join the chat at https://slack.karafka.io](https://raw.githubusercontent.com/karafka/misc/master/slack.svg)](https://slack.karafka.io)
 
 [Karafka Sidekiq Backend](https://github.com/karafka/sidekiq-backend) provides support for consuming (processing) received Kafka messages inside of Sidekiq workers.
 
@@ -140,10 +140,8 @@ end
 
 ## Note on contributions
 
-First, thank you for considering contributing to Karafka! It's people like you that make the open source community such a great community!
+First, thank you for considering contributing to the Karafka ecosystem! It's people like you that make the open source community such a great community!
 
-Each pull request must pass all the RSpec specs and meet our quality requirements.
+Each pull request must pass all the RSpec specs, integration tests and meet our quality requirements.
 
-To check if everything is as it should be, we use [Coditsu](https://coditsu.io) that combines multiple linters and code analyzers for both code and documentation. Once you're done with your changes, submit a pull request.
-
-Coditsu will automatically check your work against our quality standards. You can find your commit check results on the [builds page](https://app.coditsu.io/karafka/repositories/karafka-sidekiq-backend/builds/commit_builds) of Karafka Sidekiq Backend repository.
+Fork it, update and wait for the Github Actions results.
