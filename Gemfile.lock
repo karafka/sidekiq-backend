@@ -75,7 +75,7 @@ GEM
     king_konf (1.0.0)
     rack (2.2.3)
     rake (13.0.6)
-    redis (4.4.0)
+    redis (4.5.1)
     reline (0.2.7)
       io-console (~> 0.5)
     rspec (3.10.0)
