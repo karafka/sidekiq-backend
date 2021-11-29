@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.platform    = Gem::Platform::RUBY
   spec.authors     = ['Maciej Mensfeld']
   spec.email       = %w[maciej@mensfeld.pl]
-  spec.homepage    = 'https://github.com/karafka/karafka-sidekiq-backend'
+  spec.homepage    = 'https://karafka.io'
   spec.summary     = 'Karafka Sidekiq backend for background messages processing'
   spec.description = 'Karafka Sidekiq backend for background messages processing'
   spec.license     = 'MIT'
