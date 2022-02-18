@@ -14,9 +14,18 @@ module Karafka
     # @return [Array<Hash>] Array with hash built out of params data
     def encode(params_batch)
       params_batch.map do |param|
+        metadata_hash = param.metadata.to_h
+        metadata_hash.transform_keys!(&:to_s)
+        # This will be taken back from the routing and is not safe for serialization
+        metadata_hash.delete('deserializer')
+
+        # Cast times to strings, we will deserialize it back in Sidekiq
+        metadata_hash['receive_time'] = metadata_hash['receive_time'].to_s
+        metadata_hash['create_time'] = metadata_hash['create_time'].to_s
+
         {
           'raw_payload' => param.raw_payload,
-          'metadata' => param.metadata.to_h
+          'metadata' => metadata_hash
         }
       end
     end
@@ -24,7 +33,9 @@ module Karafka
     # @param params_batch [Array<Hash>] Sidekiq params that are now an array
     # @return [Array<Hash>] exactly what we've fetched from Sidekiq
     def decode(params_batch)
-      params_batch
+      params_batch.map do |param|
+        metadata param['metadata']
+      end
     end
   end
 end

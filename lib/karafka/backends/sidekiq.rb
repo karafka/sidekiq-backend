@@ -18,7 +18,7 @@ module Karafka
           topic.worker.perform_async(
             topic.id,
             topic.interchanger.encode(params_batch),
-            respond_to?(:batch_metadata) ? batch_metadata.to_h : nil
+            respond_to?(:batch_metadata) ? batch_metadata.to_h.transform_keys(&:to_s).except('deserializer') : nil
           )
         end
       end
