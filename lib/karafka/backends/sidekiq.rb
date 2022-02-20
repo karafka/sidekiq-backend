@@ -17,10 +17,11 @@ module Karafka
         Karafka.monitor.instrument('backends.sidekiq.process', caller: self) do
           # We add batch metadata only for batch worker
           batch_metadata_hash = if respond_to?(:batch_metadata)
-            # We remove deserializer as it's not safe to convert it to json and we can rebuild
-            # it anyhow based on the routing data in the worker
-            batch_metadata.to_h.transform_keys(&:to_s).except('deserializer')
-          end
+                                  # We remove deserializer as it's not safe to convert it to json
+                                  # and we can rebuild it anyhow based on the routing data in the
+                                  # worker
+                                  batch_metadata.to_h.transform_keys(&:to_s).except('deserializer')
+                                end
 
           topic.worker.perform_async(
             topic.id,
