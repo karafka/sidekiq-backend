@@ -24,11 +24,11 @@ RSpec.describe Karafka::Interchanger do
 
     let(:mapped_metadata) do
       meta = array_params_batch
-               .first
-               .metadata
-               .to_h
-               .transform_keys(&:to_s)
-               .except('deserializer')
+             .first
+             .metadata
+             .to_h
+             .transform_keys(&:to_s)
+             .except('deserializer')
 
       meta['create_time'] = meta['create_time'].to_f
       meta['receive_time'] = meta['receive_time'].to_f
