@@ -20,7 +20,7 @@ module Karafka
         # This will be taken back from the routing and is not safe for serialization
         metadata_hash.delete('deserializer')
 
-        # Cast times to strings, we will deserialize it back in Sidekiq
+        # Cast times to strings, we will de-serialize it back in Sidekiq
         metadata_hash['receive_time'] = metadata_hash['receive_time'].to_s
         metadata_hash['create_time'] = metadata_hash['create_time'].to_s
 
