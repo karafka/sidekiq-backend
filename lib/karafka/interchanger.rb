@@ -21,8 +21,8 @@ module Karafka
         metadata_hash.delete('deserializer')
 
         # Cast times to strings, we will de-serialize it back in Sidekiq
-        metadata_hash['receive_time'] = metadata_hash['receive_time'].to_s
-        metadata_hash['create_time'] = metadata_hash['create_time'].to_s
+        metadata_hash['receive_time'] = metadata_hash['receive_time'].to_f
+        metadata_hash['create_time'] = metadata_hash['create_time'].to_f
 
         {
           'raw_payload' => param.raw_payload,
@@ -37,8 +37,8 @@ module Karafka
       params_batch.map do |param|
         metadata = param['metadata']
         # Covert serialized dates back to what they were
-        metadata['receive_time'] = Date.parse(metadata['receive_time'])
-        metadata['create_time'] = Date.parse(metadata['create_time'])
+        metadata['receive_time'] = Time.at(metadata['receive_time']).to_time
+        metadata['create_time'] = Time.at(metadata['create_time']).to_time
 
         param['metadata'] = metadata
 
