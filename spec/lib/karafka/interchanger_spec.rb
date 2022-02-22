@@ -28,7 +28,7 @@ RSpec.describe Karafka::Interchanger do
              .metadata
              .to_h
              .transform_keys(&:to_s)
-             .except('deserializer')
+             .tap { |hash| hash.delete('deserializer') }
 
       meta['create_time'] = meta['create_time'].to_f
       meta['receive_time'] = meta['receive_time'].to_f
