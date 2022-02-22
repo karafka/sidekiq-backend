@@ -4,6 +4,7 @@
 - Ruby 3.1 support
 - Drop support for ruby 2.6 in the CI
 - Fix unsafe JSON serialization issued by Sidekiq (#122)
+- Provide sub-second precision for data processed in Sidekiq
 
 ## 1.4.3 (2021-12-05)
 - Source code metadata url added to the gemspec
