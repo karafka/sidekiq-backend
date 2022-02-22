@@ -48,5 +48,6 @@ RSpec.describe Karafka::Interchanger do
     let(:encoded) { described_class.new.encode(params_batch) }
 
     it { expect(decoded).to eq(encoded) }
+    it { expect(decoded[0].keys).not_to include('deserializer') }
   end
 end
