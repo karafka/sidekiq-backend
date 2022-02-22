@@ -2,7 +2,7 @@
 
 ## 1.4.4 (Unreleased)
 - Ruby 3.1 support
-- Drop support for ruby 2.6 in the CI
+- Drop support for Ruby 2.6
 - Fix unsafe JSON serialization issued by Sidekiq (#122)
 - Provide sub-second precision for data processed in Sidekiq
 
