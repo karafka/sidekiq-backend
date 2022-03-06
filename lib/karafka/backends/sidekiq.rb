@@ -6,7 +6,7 @@ module Karafka
     # Sidekiq backend that schedules stuff to Sidekiq worker for delayed execution
     module Sidekiq
       # Karafka Sidekiq backend version
-      VERSION = '1.4.3'
+      VERSION = '1.4.4'
 
       # Enqueues the execution of perform method into a worker.
       # @note Each worker needs to have a class #perform_async method that will allow us to pass
@@ -15,10 +15,18 @@ module Karafka
       #   in the worker)
       def process
         Karafka.monitor.instrument('backends.sidekiq.process', caller: self) do
+          # We add batch metadata only for batch worker
+          batch_metadata_hash = if respond_to?(:batch_metadata)
+                                  # We remove deserializer as it's not safe to convert it to json
+                                  # and we can rebuild it anyhow based on the routing data in the
+                                  # worker
+                                  batch_metadata.to_h.transform_keys(&:to_s).except('deserializer')
+                                end
+
           topic.worker.perform_async(
             topic.id,
             topic.interchanger.encode(params_batch),
-            respond_to?(:batch_metadata) ? batch_metadata.to_h : nil
+            batch_metadata_hash
           )
         end
       end
