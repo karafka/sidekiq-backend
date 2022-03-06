@@ -1,6 +1,6 @@
 # Karafka Sidekiq Backend
 
-## 1.4.4 (Unreleased)
+## 1.4.4 (2022-03-06)
 - Ruby 3.1 support
 - Drop support for Ruby 2.6
 - Fix unsafe JSON serialization issued by Sidekiq (#122)
