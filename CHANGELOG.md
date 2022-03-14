@@ -1,5 +1,8 @@
 # Karafka Sidekiq Backend
 
+## 1.4.5 (2022-03-14)
+- Fix Hash#except usage (barthez)
+
 ## 1.4.4 (2022-03-06)
 - Ruby 3.1 support
 - Drop support for Ruby 2.6
