@@ -32,7 +32,17 @@ RSpec.describe Karafka::Backends::Sidekiq do
   end
 
   context 'when batch_metadata is available for the consumer instance' do
-    pending
+    before do
+      consumer.define_singleton_method(:batch_metadata) do
+        { a: 1, deserializer: Object.new }
+      end
+    end
+
+    it 'expect to schedule with sidekiq using interchanged data' do
+      expect(topic.worker).to receive(:perform_async)
+        .with(topic.id, interchanged_data, { 'a' => 1 })
+      consumer.call
+    end
   end
 
   context 'when batch_metadata is not available for the consumer instance' do
