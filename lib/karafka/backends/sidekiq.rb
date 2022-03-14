@@ -20,7 +20,9 @@ module Karafka
                                   # We remove deserializer as it's not safe to convert it to json
                                   # and we can rebuild it anyhow based on the routing data in the
                                   # worker
-                                  batch_metadata.to_h.transform_keys(&:to_s).except('deserializer')
+                                  batch_metadata.to_h
+                                                .transform_keys(&:to_s)
+                                                .tap { |h| h.delete('deserializer') }
                                 end
 
           topic.worker.perform_async(
