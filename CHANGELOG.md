@@ -1,5 +1,8 @@
 # Karafka Sidekiq Backend
 
+## 1.4.6 (Unreleased)
+- Add `rubygems_mfa_required`
+
 ## 1.4.5 (2022-03-14)
 - Fix Hash#except usage (barthez)
 
