@@ -1,6 +1,6 @@
 # Karafka Sidekiq Backend
 
-## 1.4.6 (Unreleased)
+## 1.4.6 (2022-04-17)
 - Add `rubygems_mfa_required`
 
 ## 1.4.5 (2022-03-14)
