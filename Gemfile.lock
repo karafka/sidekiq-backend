@@ -56,7 +56,7 @@ GEM
       dry-core (~> 0.5, >= 0.5)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.9, >= 1.9.1)
-    envlogic (1.1.4)
+    envlogic (1.1.5)
       dry-inflector (~> 0.1)
     karafka (1.4.13)
       dry-configurable (~> 0.13)
@@ -108,7 +108,6 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
-  arm64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
