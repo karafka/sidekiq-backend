@@ -37,7 +37,7 @@ GEM
       dry-configurable (~> 0.13, >= 0.13.0)
       dry-core (~> 0.5, >= 0.5)
       dry-events (~> 0.2)
-    dry-schema (1.9.1)
+    dry-schema (1.9.2)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.13, >= 0.13.0)
       dry-core (~> 0.5, >= 0.5)
@@ -50,12 +50,12 @@ GEM
       dry-core (~> 0.5, >= 0.5)
       dry-inflector (~> 0.1, >= 0.1.2)
       dry-logic (~> 1.0, >= 1.0.2)
-    dry-validation (1.8.0)
+    dry-validation (1.8.1)
       concurrent-ruby (~> 1.0)
       dry-container (~> 0.7, >= 0.7.1)
       dry-core (~> 0.5, >= 0.5)
       dry-initializer (~> 3.0)
-      dry-schema (~> 1.9, >= 1.9.1)
+      dry-schema (~> 1.8, >= 1.8.0)
     envlogic (1.1.5)
       dry-inflector (~> 0.1)
     karafka (1.4.13)
@@ -69,7 +69,7 @@ GEM
       waterdrop (~> 1.4)
       zeitwerk (~> 2.4)
     king_konf (1.0.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rake (13.0.6)
     redis (4.6.0)
     rspec (3.11.0)
@@ -85,7 +85,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.11.0)
     rspec-support (3.11.0)
-    ruby-kafka (1.4.0)
+    ruby-kafka (1.5.0)
       digest-crc
     sidekiq (6.4.2)
       connection_pool (>= 2.2.2)
@@ -116,4 +116,4 @@ DEPENDENCIES
   simplecov
 
 BUNDLED WITH
-   2.3.11
+   2.3.14
