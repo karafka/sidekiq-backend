@@ -2,9 +2,9 @@
 
 ## Deprecation notice
 
-This backend was designed to compensate for lack of multi-threading in Karafka. After Karafka `2.0` release, this backend development won't be continued.
+This backend was designed to compensate for lack of multi-threading in Karafka. Karafka `2.0` **is** multi-threaded.
 
-We will **still** support it for Karafka `1.4` but it won't work with Karafka `2.0`. We will however provide an extensive guide on how you can achieve similar functionality with Sidekiq yourself.
+We will **still** support it for Karafka `1.4` but it won't work with Karafka `2.0`.
 
 ## About
 
