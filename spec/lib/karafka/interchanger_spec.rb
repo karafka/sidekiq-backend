@@ -3,14 +3,15 @@
 RSpec.describe Karafka::Interchanger do
   subject(:interchanger) { described_class.new }
 
+  let(:time) { Time.at(111_111_111_1.9999999).to_time }
   let(:array_params_batch) do
     [
       Karafka::Params::Params.new(
         1,
         Karafka::Params::Metadata.new(
           deserializer: 'Class',
-          create_time: Time.now,
-          receive_time: Time.now
+          create_time: time,
+          receive_time: time
         )
       )
     ]
@@ -30,8 +31,8 @@ RSpec.describe Karafka::Interchanger do
              .transform_keys(&:to_s)
              .tap { |hash| hash.delete('deserializer') }
 
-      meta['create_time'] = meta['create_time'].to_f
-      meta['receive_time'] = meta['receive_time'].to_f
+      meta['create_time'] = meta['create_time'].to_f.to_s
+      meta['receive_time'] = meta['receive_time'].to_f.to_s
 
       meta
     end
@@ -43,11 +44,12 @@ RSpec.describe Karafka::Interchanger do
   end
 
   describe '#decode' do
-    subject(:decoded) { described_class.new.decode(encoded) }
+    subject(:decoded) { described_class.new.decode(encoded_and_processed) }
 
+    let(:encoded_and_processed) { JSON.load(JSON.dump(encoded)) } # rubocop:disable JSONLoad
     let(:encoded) { described_class.new.encode(params_batch) }
 
-    it { expect(decoded).to eq(encoded) }
+    it { expect(decoded).to eq(encoded_and_processed) }
     it { expect(decoded[0].keys).not_to include('deserializer') }
   end
 end
