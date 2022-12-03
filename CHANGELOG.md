@@ -1,5 +1,9 @@
 # Karafka Sidekiq Backend
 
+## 1.4.7 (Unreleased)
+- Serialize timestamps as strings to prevent Sidekiq warnings (#135)
+- Add `documentation_uri` and other links
+
 ## 1.4.6 (2022-04-17)
 - Add `rubygems_mfa_required`
 

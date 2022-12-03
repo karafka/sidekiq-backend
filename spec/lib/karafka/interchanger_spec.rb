@@ -46,7 +46,9 @@ RSpec.describe Karafka::Interchanger do
   describe '#decode' do
     subject(:decoded) { described_class.new.decode(encoded_and_processed) }
 
-    let(:encoded_and_processed) { JSON.load(JSON.dump(encoded)) } # rubocop:disable JSONLoad
+    # rubocop:disable Security/JSONLoad
+    let(:encoded_and_processed) { JSON.load(JSON.dump(encoded)) }
+    # rubocop:enable Security/JSONLoad
     let(:encoded) { described_class.new.encode(params_batch) }
 
     it { expect(decoded).to eq(encoded_and_processed) }
