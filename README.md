@@ -4,7 +4,7 @@
 
 This backend was designed to compensate for lack of multi-threading in Karafka. Karafka `2.0` **is** multi-threaded.
 
-We will **still** support it for Karafka `1.4` but it won't work with Karafka `2.0`.
+It is **no longer needed** and is **no longer** maintained.
 
 ## About
 
