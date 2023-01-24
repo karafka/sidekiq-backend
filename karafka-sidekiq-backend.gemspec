@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
     We highly recommend updating to Karafka 2.0.
     Visit this page for more details: https://karafka.io/docs/Versions-Lifecycle-and-EOL
   MSG
-  
+
   spec.metadata = {
     'funding_uri' => 'https://karafka.io/#become-pro',
     'homepage_uri' => 'https://karafka.io',
