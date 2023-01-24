@@ -1,5 +1,9 @@
 # Karafka Sidekiq Backend
 
+## 1.4.8 (Unreleased)
+- Warn that this library is no longer maintained.
+- Fix zeitwerk warning.
+
 ## 1.4.7 (2022-12-03)
 - Serialize timestamps as strings to prevent Sidekiq warnings (#135)
 - Add `documentation_uri` and other links
