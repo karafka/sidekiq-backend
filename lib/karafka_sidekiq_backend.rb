@@ -8,7 +8,7 @@
 require_relative 'karafka/errors'
 
 Zeitwerk::Loader
-  .for_gem
+  .for_gem(warn_on_extra_files: false)
   .tap { |loader| loader.ignore("#{__dir__}/karafka_sidekiq_backend.rb") }
   .tap { |loader| loader.ignore("#{__dir__}/karafka-sidekiq-backend.rb") }
   .tap(&:setup)
