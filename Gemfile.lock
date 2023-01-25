@@ -8,7 +8,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     connection_pool (2.3.0)
     delivery_boy (1.1.0)
       king_konf (~> 1.0)
@@ -124,4 +124,4 @@ DEPENDENCIES
   simplecov
 
 BUNDLED WITH
-   2.4.4
+   2.4.5
