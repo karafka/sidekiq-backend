@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
     WARN: Karafka Sidekiq Backend and Karafka 1.4 are no longer maintained.
     Karafka 2.0 is multi-threaded and does not need an alternative backend.
     We highly recommend updating to Karafka 2.0.
-    Visit this page for more details: https://karafka.io/docs/Versions-Lifecycle-and-EOL
+    Visit this page for more details: https://karafka.io/docs/Upgrades-2.0
   MSG
 
   spec.metadata = {
