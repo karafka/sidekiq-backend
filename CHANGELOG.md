@@ -1,6 +1,6 @@
 # Karafka Sidekiq Backend
 
-## 1.4.8 (Unreleased)
+## 1.4.8 (2023-01-25)
 - Warn that this library is no longer maintained.
 - Fix zeitwerk warning.
 
